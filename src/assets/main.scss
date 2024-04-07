@@ -1,0 +1,26 @@
+@import './normalize.scss';
+
+.btn {
+    padding: 0.5rem 1rem;
+    border: 0;
+    background: green;
+    color: white;
+    border-radius: 0.25rem;
+    cursor: pointer;
+  
+    &.btn-add-player {
+      background: white;
+      color: black;
+      border: 1px solid #999;
+    }
+    &.btn-remove-player {
+      padding: .25rem .5rem;
+      background: red;
+      margin-left: .5rem;
+    }
+    &.btn-start {
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+}
