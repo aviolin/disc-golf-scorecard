@@ -13,7 +13,7 @@ const updateHoles = () => {
 
 <template>
   <div class="setup-form">
-    <h1><i>Disc Golf Scorecard</i></h1>
+    <h1><img class="logo" src="/favicon.svg"><i>Disc Golf Scorecard</i></h1>
     <div class="form-row">
       <p>Holes</p>
       <div class="hole-inputs">
@@ -41,6 +41,10 @@ const updateHoles = () => {
   max-width: 600px;
   margin: auto;
   text-align: center;
+}
+
+.logo {
+  width: 3rem;
 }
 
 p {
