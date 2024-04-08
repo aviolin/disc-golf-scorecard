@@ -17,7 +17,7 @@ const updateHoles = () => {
     <div class="form-row">
       <p>Holes</p>
       <div class="hole-inputs">
-        <label v-for="i in 27" :key="i" class="radio-wrapper"><input type="radio" name="holes" :value="i" v-model="holes" @change="updateHoles"><span>{{ i }}</span></label>
+        <label v-for="i in 22" :key="i" class="radio-wrapper"><input type="radio" name="holes" :value="i" v-model="holes" @change="updateHoles"><span>{{ i }}</span></label>
       </div>
     </div>
 
@@ -46,7 +46,10 @@ const updateHoles = () => {
 .logo {
   width: 3rem;
 }
-
+h1 {
+  display: inline-flex;
+  align-items: center;
+}
 p {
   font-size: 1.5rem;
   margin-bottom: 1rem;
