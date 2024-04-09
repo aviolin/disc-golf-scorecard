@@ -72,7 +72,7 @@ p {
     right: 0;
     padding: 1rem;
     border: 0;
-    background: white;
+    background: transparent;
     color: black;
     cursor: pointer;
 }

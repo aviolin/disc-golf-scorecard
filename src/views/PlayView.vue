@@ -29,7 +29,7 @@ const gameStore = useGameStore();
                     Total
                 </td>
                 <td v-for="(player, playerIndex) in gameStore.players" :key="playerIndex">
-                    {{  player.total }}
+                    {{ player.total > 0 ? `+${player.total}` : player.total }}
                 </td>
             </tfoot>
         </table>

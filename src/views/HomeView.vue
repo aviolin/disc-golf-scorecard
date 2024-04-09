@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { useGameStore } from '../stores/game'
 
-const holes = ref(9)
+const holes = ref(0)
 
 const gameStore = useGameStore()
 
@@ -13,7 +13,7 @@ const updateHoles = () => {
 
 <template>
   <div class="setup-form">
-    <h1><img class="logo" src="/favicon.svg"><i>Disc Golf Scorecard</i></h1>
+    <h1><i>New Game</i></h1>
     <div class="form-row">
       <p>Holes</p>
       <div class="hole-inputs">

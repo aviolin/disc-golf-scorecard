@@ -10,8 +10,6 @@ const props = defineProps({
 
 const modalOpen = ref(false)
 
-const gameStore = useGameStore()
-
 const setModalOpen = (value) => {
     modalOpen.value = value
 }
@@ -41,13 +39,14 @@ const scoreClass = computed(() => {
             return 'other'
     }
 })
+
 </script>
 
 <template>
     <td :class="'score-' + scoreClass">
         <div class="score-wrapper">
             <button @click="() => setModalOpen(true)">
-                <b>{{  player.holes[hole.id].score }}</b>
+                <b>{{ player.holes[hole.id].score }}</b>
             </button>
             <ScoreModal v-if="modalOpen" :player="player" :hole="hole" @close="() => setModalOpen(false)"/>
         </div>
@@ -68,13 +67,14 @@ td {
     text-align: center;
     border: 0;
     background: #f9f9f9;
+    transition: 0.5s;
 
     &.score {
         &-ace {
-            background: gold;
+            background: #33ffff;
         }
         &-eagle {
-            background: #33ffff;
+            background: #33ff66;
         }
         &-birdie {
             background: #bbffaa;
@@ -83,16 +83,16 @@ td {
             background: #eee;
         }
         &-bogey {
-            background: red;
+            background: #FFa0aB;
         }
         &-double-bogey {
-            background: salmon;
+            background: #ff6666;
         }
         &-triple-bogey {
-            background: orange;
+            background: red;
         }
         &-other {
-            background: #efefef;
+            background: red;
         }
     }
 }

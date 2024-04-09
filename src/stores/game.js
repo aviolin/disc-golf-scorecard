@@ -1,9 +1,15 @@
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useGameStore = defineStore('gameStore', () => {
-    const players = ref([])
-    const holes = ref([])
+
+    let data = null;
+    if (localStorage.getItem('scorecard')) {
+        data = JSON.parse(localStorage.getItem('scorecard'))
+    }
+
+    const players = ref(data?.players || [])
+    const holes = ref(data?.holes || [])
 
     const addPlayer = () => {
         players.value.push({
@@ -73,6 +79,18 @@ export const useGameStore = defineStore('gameStore', () => {
             }, 0)
         })
     }
+
+    const updateLocalStorage = () => {
+        localStorage.setItem('scorecard', JSON.stringify({
+            players: players.value,
+            holes: holes.value,
+        }))
+    }
+
+    watch(players, updateLocalStorage, { deep: true })
+    watch(holes, updateLocalStorage, { deep: true })
+
+
 
     return { players, holes, addPlayer, removePlayer, setHoles, setScore, setPar }
 })
