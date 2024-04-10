@@ -1,7 +1,7 @@
 <script setup>
 import { defineProps, ref, computed } from 'vue'
-import { useGameStore } from '@/stores/game'
 import ScoreModal from '@/components/ScoreModal.vue'
+import ModalWrapper from '@/components/ModalWrapper.vue'
 
 const props = defineProps({
     player: Object,
@@ -48,7 +48,12 @@ const scoreClass = computed(() => {
             <button @click="() => setModalOpen(true)">
                 <b>{{ player.holes[hole.id].score }}</b>
             </button>
-            <ScoreModal v-if="modalOpen" :player="player" :hole="hole" @close="() => setModalOpen(false)"/>
+            <ModalWrapper 
+                v-if="modalOpen" 
+                @close="() => setModalOpen(false)"
+                v-slot="modal">
+                <ScoreModal :player="player" :hole="hole" :modal="modal"/>
+            </ModalWrapper>
         </div>
     </td>
 </template>

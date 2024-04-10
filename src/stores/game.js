@@ -20,15 +20,31 @@ export const useGameStore = defineStore('gameStore', () => {
         })
 
         setHoles(holes.value.length)
+
+        return players.value[players.value.length - 1]
     }
 
     const removePlayer = (id) => {
         players.value = players.value.filter((p) => p.id !== id)
     }
 
+    const addHole = () => {
+        holes.value.push({
+            id: holes.value.length,
+            par: 3,
+        })
+
+        players.value.forEach((player) => {
+            player.holes.push({
+                id: holes.value.length - 1,
+                score: '',
+            })
+        })
+    }
+
     const setHoles = (numHoles) => {
         holes.value = []
-        for (let i = 1; i <= numHoles; i++) {
+        for (let i = 0; i < numHoles; i++) {
             holes.value.push({
                 id: i,
                 par: 3,
@@ -36,7 +52,7 @@ export const useGameStore = defineStore('gameStore', () => {
         }
 
         players.value.forEach((player) => {
-            for (let i = 1; i <= numHoles; i++) {
+            for (let i = 0; i < numHoles; i++) {
                 if (!player.holes[i]) {
                     player.holes[i] = {
                         id: i,
@@ -70,6 +86,13 @@ export const useGameStore = defineStore('gameStore', () => {
         calcTotals()
     }
 
+    const updateName = (playerId, name) => {
+        const player = players.value.find((p) => p.id === playerId)
+        if (!player) return;
+
+        player.name = name
+    }
+
     const calcTotals = () => {
         players.value.forEach((player) => {
             player.total = player.holes.reduce((acc, h) => {
@@ -78,6 +101,11 @@ export const useGameStore = defineStore('gameStore', () => {
                 return acc + h.score - par
             }, 0)
         })
+    }
+
+    const reset = () => {
+        players.value = []
+        holes.value = []
     }
 
     const updateLocalStorage = () => {
@@ -92,5 +120,5 @@ export const useGameStore = defineStore('gameStore', () => {
 
 
 
-    return { players, holes, addPlayer, removePlayer, setHoles, setScore, setPar }
+    return { players, holes, addPlayer, removePlayer, updateName, addHole, setHoles, setScore, reset, setPar }
 })

@@ -1,15 +1,13 @@
 <script setup>
 import { defineProps, ref } from 'vue'
-import { useGameStore } from '@/stores/game'
 import HoleModal from '@/components/HoleModal.vue'
+import ModalWrapper from '@/components/ModalWrapper.vue'
 
 const props = defineProps({
     hole: Object,
 })
 
 const modalOpen = ref(false)
-
-const gameStore = useGameStore()
 
 const setModalOpen = (value) => {
     modalOpen.value = value
@@ -18,10 +16,15 @@ const setModalOpen = (value) => {
 
 <template>
     <button @click="() => setModalOpen(true)">
-        <span class="hole-number">{{ hole.id }}</span>
+        <span class="hole-number">{{ hole.id + 1 }}</span>
         <b>{{ hole.par }}</b>
     </button>
-    <HoleModal v-if="modalOpen" :hole="hole" @close="() => setModalOpen(false)"/>
+    <ModalWrapper 
+        v-if="modalOpen" 
+        v-slot="modal"
+        @close="() => setModalOpen(false)">
+        <HoleModal :hole="hole" :modal="modal"/>
+    </ModalWrapper>
 </template>
 
 <style lang="scss" scoped>

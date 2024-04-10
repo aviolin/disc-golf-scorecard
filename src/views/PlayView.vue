@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { useGameStore } from '@/stores/game';
 import HoleScore from '@/components/ScoreInfo.vue';
 import HoleInfo from '@/components/HoleInfo.vue';
+import PlayerInfo from '@/components/PlayerInfo.vue';
 
 const gameStore = useGameStore();
 </script>
@@ -14,7 +15,10 @@ const gameStore = useGameStore();
                 <tr>
                     <th class="hole">Hole</th>
                     <th v-for="(player, index) in gameStore.players" :key="index">
-                        <div class="player-name">{{ player.name }}</div>
+                        <PlayerInfo :player="player" />
+                    </th>
+                    <th class="add-player">
+                        <PlayerInfo :player="{}" :addButton="true" />
                     </th>
                 </tr>
             </thead>
@@ -23,6 +27,11 @@ const gameStore = useGameStore();
                     <HoleInfo :hole="hole" />
                 </td>
                 <HoleScore :player="player" :hole="hole" v-for="(player, playerIndex) in gameStore.players" :key="playerIndex" />
+            </tr>
+            <tr>
+                <td class="add-hole" colspan="999">
+                    <button class="btn btn-add" @click="gameStore.addHole()">Add Hole +</button>
+                </td>
             </tr>
             <tfoot class="scorecard-total-row">
                 <td class="hole">
@@ -39,19 +48,21 @@ const gameStore = useGameStore();
 <style lang="scss" scoped>
 .scorecard-wrapper {
     padding: 2rem;
-    // overflow-x: auto;
 }
 .scorecard {
     margin: auto;
 }
+td {
+    text-align: center;
+}
 tfoot {
     position: sticky;
     bottom: 0;
-    background: white;
+    background: #333;
+    color: white;
     z-index: 50;
     td {
         padding: 1rem;
-        border-top: 2px solid black;
     }
 }
 th {
@@ -60,9 +71,14 @@ th {
     background: white;
     padding: .5rem;
     z-index: 50;
-    border-bottom: 2px solid black;
 }
-td {
+.add-hole {
+    padding-block: 1rem;
     text-align: center;
+}
+.add-player {
+    .btn {
+        border: 0;
+    }
 }
 </style>

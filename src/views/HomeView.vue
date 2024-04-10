@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useGameStore } from '../stores/game'
 
 const holes = ref(0)
@@ -9,6 +9,10 @@ const gameStore = useGameStore()
 const updateHoles = () => {
   gameStore.setHoles(holes.value)
 }
+
+const canStartGame = computed(() => {
+  return holes.value > 0 && gameStore.players.length > 0
+})
 </script>
 
 <template>
@@ -25,12 +29,13 @@ const updateHoles = () => {
       <p>Players</p>
       <div v-for="player in gameStore.players" :key="player.id" class="player-row">
         <input type="text" name="player" placeholder="Name" v-model="player.name" />
-        <button class="btn btn-remove-player" @click="() => gameStore.removePlayer(player.id)">X</button>
+        <button class="btn btn-remove" @click="() => gameStore.removePlayer(player.id)">X</button>
       </div>
-      <button class="btn btn-add-player" @click="gameStore.addPlayer">Add Player +</button>
+      <button class="btn btn-add" @click="gameStore.addPlayer">Add Player +</button>
     </div>
 
-    <RouterLink class="btn btn-start" to="play">Start Game</RouterLink>
+    <span v-if="!canStartGame" class="btn btn-primary btn-disabled">Start Game</span>
+    <RouterLink v-else class="btn btn-primary" to="play" >Start Game</RouterLink>
   </div>
 
 </template>

@@ -1,5 +1,18 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import ModalWrapper from '@/components/ModalWrapper.vue'
+import NewGameModal from '@/components/NewGameModal.vue'
+
+const newGameModalIsOpen = ref(false)
+
+const router = useRouter()
+
+const newGame = () => {
+  console.log('New Game')
+  router.push('/')
+}
+
 </script>
 
 <template>
@@ -9,7 +22,19 @@ import { RouterLink, RouterView } from 'vue-router'
         <RouterLink to="/" class="logo"><img src="/favicon.svg"><i>Disc Golf Scorecard</i></RouterLink>
       </div>
       <nav>
-        <RouterLink to="/" class="btn btn-nav">New Game</RouterLink>
+        <button
+          class="btn btn-nav"
+          @click="newGameModalIsOpen = true"
+        >
+          New Game
+        </button>
+        <ModalWrapper
+          v-if="newGameModalIsOpen"
+          v-slot="modal"
+          @close="newGameModalIsOpen = false"
+        >
+          <NewGameModal :modal="modal"/>
+        </ModalWrapper>
       </nav>
     </div>
   </header>
