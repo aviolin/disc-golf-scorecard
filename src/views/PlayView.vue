@@ -13,7 +13,7 @@ const gameStore = useGameStore();
         <table class="scorecard">
             <thead>
                 <tr>
-                    <th class="hole">Hole</th>
+                    <th class="hole"></th>
                     <th v-for="(player, index) in gameStore.players" :key="index">
                         <PlayerInfo :player="player" />
                     </th>

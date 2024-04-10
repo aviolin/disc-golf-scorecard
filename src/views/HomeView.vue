@@ -21,8 +21,10 @@ const canStartGame = computed(() => {
     <div class="form-row">
       <p>Holes</p>
       <div class="hole-inputs">
-        <label v-for="i in 22" :key="i" class="radio-wrapper"><input type="radio" name="holes" :value="i" v-model="holes" @change="updateHoles"><span>{{ i }}</span></label>
+        <label class="radio-wrapper"><input type="radio" name="holes" :value="9" v-model="holes" @change="updateHoles"><span>{{ 9 }}</span></label>
+        <label class="radio-wrapper"><input type="radio" name="holes" :value="18" v-model="holes" @change="updateHoles"><span>{{ 18 }}</span></label>
       </div>
+      <small>* You can add more as you go</small>
     </div>
 
     <div class="form-row">
@@ -58,6 +60,11 @@ h1 {
 p {
   font-size: 1.5rem;
   margin-bottom: 1rem;
+}
+small {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  display: block;
 }
 
 .form-row {
