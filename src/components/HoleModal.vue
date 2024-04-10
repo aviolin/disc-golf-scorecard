@@ -17,7 +17,7 @@ const setPar = (value) => {
 </script>
 
 <template>
-    <p>What is par for hole {{ hole.id }}?</p>
+    <p>What is par for hole {{ hole.id + 1}}?</p>
     <div class="button-holder">
         <button class="btn btn-secondary" v-for="i in 9" @click="() => setPar(i)" :key="i">{{ i }}</button>
     </div>

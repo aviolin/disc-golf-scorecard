@@ -18,7 +18,7 @@ const score = (value) => {
 </script>
 
 <template>
-    <p>How many throws did {{ player.name }} make on hole {{ hole.id }}?</p>
+    <p>How many throws did {{ player.name }} make on hole {{ hole.id + 1 }}?</p>
     <div class="button-holder">
         <button class="btn btn-secondary" v-for="i in 9" @click="() => score(i)" :key="i">{{ i }}</button>
     </div>
