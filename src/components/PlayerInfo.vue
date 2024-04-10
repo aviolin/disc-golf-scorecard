@@ -48,6 +48,8 @@ button {
     position: relative;
     padding: 0 0rem;
     font-weight: 700;
+    min-width: 1rem;
+    min-height: 1rem;
     cursor: pointer;
 }
 .hole-number {

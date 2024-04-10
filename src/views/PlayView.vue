@@ -28,11 +28,6 @@ const gameStore = useGameStore();
                 </td>
                 <HoleScore :player="player" :hole="hole" v-for="(player, playerIndex) in gameStore.players" :key="playerIndex" />
             </tr>
-            <tr>
-                <td class="add-hole" colspan="999">
-                    <button class="btn btn-add" @click="gameStore.addHole()">Add Hole +</button>
-                </td>
-            </tr>
             <tfoot class="scorecard-total-row">
                 <td class="hole">
                     Total
@@ -42,6 +37,9 @@ const gameStore = useGameStore();
                 </td>
             </tfoot>
         </table>
+        <div class="add-hole">
+            <button class="btn btn-add" @click="gameStore.addHole()">Add Hole +</button>
+        </div>
     </div>
 </template>
 
