@@ -1,17 +1,9 @@
 <script setup>
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-import ModalWrapper from '@/components/ModalWrapper.vue'
-import NewGameModal from '@/components/NewGameModal.vue'
+import { useFirebase } from '@/composables/useFirebase'
+import NewGameButton from '@/components/NewGameButton.vue'
 
-const newGameModalIsOpen = ref(false)
-
-const router = useRouter()
-
-const newGame = () => {
-  console.log('New Game')
-  router.push('/')
-}
+const { app, auth, user, logout } = useFirebase()
 
 </script>
 
@@ -22,19 +14,9 @@ const newGame = () => {
         <RouterLink to="/" class="logo"><img src="/favicon.svg"><i>Disc Golf Scorecard</i></RouterLink>
       </div>
       <nav>
-        <button
-          class="btn btn-nav"
-          @click="newGameModalIsOpen = true"
-        >
-          New Game
-        </button>
-        <ModalWrapper
-          v-if="newGameModalIsOpen"
-          v-slot="modal"
-          @close="newGameModalIsOpen = false"
-        >
-          <NewGameModal :modal="modal"/>
-        </ModalWrapper>
+        <RouterLink to="/play" class="btn btn-primary btn-small">Card</RouterLink>
+        <RouterLink v-if="user" to="/account" class="btn btn-secondary btn-small">Account</RouterLink>
+        <RouterLink v-else to="/log-in" class="btn btn-secondary btn-small">Login</RouterLink>
       </nav>
     </div>
   </header>
@@ -43,6 +25,14 @@ const newGame = () => {
 </template>
 
 <style lang="scss" scoped>
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 99;
+}
 .wrapper {
   display: flex;
   justify-content: space-between;
@@ -51,7 +41,7 @@ const newGame = () => {
 }
 nav {
   display: flex;
-  gap: 1rem;
+  gap: .5rem;
 }
 .logo {
   display: flex;
@@ -62,13 +52,5 @@ nav {
   img {
     width: 2rem;
   }
-}
-.btn-nav {
-  background: none;
-  color: black;
-  text-decoration: none;
-  font-size: .75rem;
-  padding: .25rem .5rem;
-  border: 1px solid black;
 }
 </style>

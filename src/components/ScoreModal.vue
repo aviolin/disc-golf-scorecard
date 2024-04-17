@@ -20,10 +20,16 @@ const score = (value) => {
 <template>
     <p>How many throws did {{ player.name }} make on hole {{ hole.id + 1 }}?</p>
     <div class="button-holder">
-        <button class="btn btn-secondary" v-for="i in 9" @click="() => score(i)" :key="i">{{ i }}</button>
+        <button class="btn btn-secondary" @click="() => score('')">0</button>
+        <button class="btn btn-secondary" v-for="i in 20" @click="() => score(i)" :key="i">{{ i }}</button>
     </div>
 </template>
 
 <style lang="scss" scoped>
-
+.button-holder {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    justify-content: center;
+}
 </style>

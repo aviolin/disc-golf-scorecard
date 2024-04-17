@@ -13,8 +13,33 @@ const router = createRouter({
       path: '/play',
       name: 'play',
       component: () => import('../views/PlayView.vue')
-    }
+    },
+    {
+      path: '/account',
+      name: 'account',
+      component: () => import('../views/AccountView.vue')
+    },
+    {
+      path: '/log-in',
+      name: 'log-in',
+      component: () => import('../views/LoginView.vue')
+    },
+    {
+      path: '/sign-up',
+      name: 'sign-up',
+      component: () => import('../views/SignupView.vue')
+    },
+    {
+      path: '/reset-password',
+      name: 'reset-password',
+      component: () => import('../views/ResetPasswordView.vue')
+    },
+    // {
+    //   path: '/:pathMatch(.*)*',
+    //   name: 'not-found',
+    //   component: () => import('../views/NotFoundView.vue')
+    // }
   ]
 })
 
-export default router
+export { router }

@@ -32,10 +32,6 @@ const removePlayer = () => {
 </template>
 
 <style lang="scss" scoped>
-input {
-    padding: 1rem;
-    margin-bottom: 1rem;
-}
 .btn-remove {
     margin: 0;
     display: block;

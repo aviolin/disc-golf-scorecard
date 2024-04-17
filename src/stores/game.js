@@ -28,6 +28,23 @@ export const useGameStore = defineStore('gameStore', () => {
         players.value = players.value.filter((p) => p.id !== id)
     }
 
+    const setPlayers = (_players) => {
+        players.value = _players.map((p) => {
+            return {
+                id: Date.now() + Math.random() + '',
+                name: 'Anonymous',
+                holes: holes.value.map((h) => {
+                    return {
+                        id: h.id,
+                        score: '',
+                    }
+                }),
+                total: 0,
+                ...p,
+            }
+        })
+    }
+
     const addHole = () => {
         holes.value.push({
             id: holes.value.length,
@@ -48,6 +65,7 @@ export const useGameStore = defineStore('gameStore', () => {
             holes.value.push({
                 id: i,
                 par: 3,
+                notes: '',
             })
         }
 
@@ -57,10 +75,24 @@ export const useGameStore = defineStore('gameStore', () => {
                     player.holes[i] = {
                         id: i,
                         score: '',
+                        notes: '',
                     } 
                 }
             }
         })
+    }
+
+    const setGame = (game) => {
+        players.value = game.players
+        holes.value = game.holes;
+    }
+
+    const setHole = (holeId, par, notes) => {
+        const hole = holes.value.find((h) => h.id === holeId)
+        if (!hole) return;
+
+        hole.par = par
+        hole.notes = notes
     }
 
     const setScore = (playerId, holeId, score) => {
@@ -120,5 +152,5 @@ export const useGameStore = defineStore('gameStore', () => {
 
 
 
-    return { players, holes, addPlayer, removePlayer, updateName, addHole, setHoles, setScore, reset, setPar }
+    return { players, holes, setGame, addPlayer, removePlayer, setPlayers, updateName, addHole, setHole, setHoles, setScore, reset, setPar }
 })
