@@ -20,7 +20,7 @@ const gameStore = useGameStore();
             <table class="scorecard">
                 <thead>
                     <tr>
-                        <th class="hole">
+                        <th class="hole hole-info save-holder">
                             <SaveGame />
                         </th>
                         <th v-for="(player, index) in gameStore.players" :key="index">
@@ -33,20 +33,20 @@ const gameStore = useGameStore();
                 </thead>
                 <tbody>
                     <tr v-for="(hole, holeIndex) in gameStore.holes" class="scorecard-row" :key="holeIndex">
-                        <td class="hole">
+                        <td class="hole hole-info">
                             <HoleInfo :hole="hole" />
                         </td>
                         <HoleScore :player="player" :hole="hole" v-for="(player, playerIndex) in gameStore.players" :key="playerIndex" />
                     </tr>
                     <tr>
-                        <td class="hole">
+                        <td class="hole hole-info">
                             <button class="btn btn-add btn-small" @click="gameStore.addHole()">+</button>
                         </td>
                     </tr>
                 </tbody>
                 <tfoot class="scorecard-total-row">
                     <tr>
-                        <td class="hole">
+                        <td class="hole hole-info">
                             Total
                         </td>
                         <td v-for="(player, playerIndex) in gameStore.players" :key="playerIndex">
@@ -81,13 +81,25 @@ tfoot {
     td {
         padding: 1rem;
     }
+    .hole-info {
+        background: black;
+        z-index: 70;
+    }
 }
 th {
+    padding: .5rem;
+}
+thead {
     position: sticky;
     top: 0;
     background: white;
-    padding: .5rem;
     z-index: 50;
+}
+.hole-info {
+    position: sticky;
+    left: 0;
+    background: white;
+    z-index: 1;
 }
 .add-hole {
     padding-block: 1rem;
@@ -97,5 +109,8 @@ th {
     .btn {
         border: 0;
     }
+}
+.save-holder {
+    background: white;
 }
 </style>
