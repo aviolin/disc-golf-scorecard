@@ -31,5 +31,8 @@ const props = defineProps({
 </template>
 
 <style lang="scss" scoped>
-
+.btn {
+    width: 100%;
+    min-height: 3rem;
+}
 </style>

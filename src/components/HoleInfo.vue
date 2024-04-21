@@ -17,7 +17,7 @@ const setModalOpen = (value) => {
 <template>
     <button @click="() => setModalOpen(true)">
         <span class="hole-number">{{ hole.id + 1 }}</span>
-        = <b>{{ hole.par }}</b>
+        <b>{{ hole.par }}</b>
     </button>
     <ModalWrapper 
         v-if="modalOpen" 

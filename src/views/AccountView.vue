@@ -23,7 +23,9 @@ onBeforeMount(() => {
         <AccountDisplayName />
         <AccountEmail />
         <AccountPassword />
-        <button @click="logout" class="btn btn-secondary btn-small">Logout</button>
+        <button @click="logout" class="btn btn-secondary btn-small">
+            <span class="material-symbols-outlined">logout</span> Logout
+        </button>
         <AccountDelete />
     </form>
 </template>

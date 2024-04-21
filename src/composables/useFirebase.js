@@ -44,6 +44,8 @@ const db = ref(null);
 
 const userGames = ref([]);
 
+const status = ref('loading');
+
 const useFirebase = () => {
 
   // Initialize Firebase
@@ -59,12 +61,16 @@ const useFirebase = () => {
         // const uid = user.uid;
         console.log('Auth state changed:', _user)
         user.value = _user;
-        getGames()
+        getGames().then(() => {
+          status.value = 'loaded';
+        })
+        
       } else {
         // User is signed out
         console.log('Auth state changed: user signed out')
-        user.value = null;
+        user.value = false;
         userGames.value = [];
+        status.value = 'loaded';
       }
     });
 
@@ -117,7 +123,8 @@ const useFirebase = () => {
     signOut(auth.value)
       .then(() => {
         console.log('Logged out')
-        user.value = null;
+        user.value = false;
+        status.value = 'loaded';
         router.push('/');
       })
       .catch((error) => {
@@ -178,11 +185,11 @@ const useFirebase = () => {
 
 
   return { 
-    app, auth, user, db, 
+    app, auth, user, db, status,
     updateProfile,updateEmail, updatePassword, deleteUser,
     createAccount, login, logout, reauthenticate, sendPasswordResetEmail,
     addDocument, getDocument, deleteDocument,
-    userGames
+    userGames, getGames
   };
 }
 

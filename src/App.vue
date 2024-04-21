@@ -1,27 +1,33 @@
 <script setup>
-import { ref } from 'vue'
 import { useFirebase } from '@/composables/useFirebase'
-import NewGameButton from '@/components/NewGameButton.vue'
+import AnimatedLoader from '@/components/AnimatedLoader.vue'
 
-const { app, auth, user, logout } = useFirebase()
+const { status, user } = useFirebase()
 
 </script>
 
 <template>
-  <header>
-    <div class="wrapper">
-      <div class="logo">
-        <RouterLink to="/" class="logo"><img src="/favicon.svg"><i>Disc Golf Scorecard</i></RouterLink>
+  <template v-if="status !== 'loading'">
+    <header>
+      <div class="wrapper">
+        <div class="logo">
+          <RouterLink to="/" class="logo"><img src="/favicon.svg"><i>Disc Golf Scorecard</i></RouterLink>
+        </div>
+        <nav>
+          <RouterLink to="/play" class="btn btn-primary btn-small">Card</RouterLink>
+          <RouterLink v-if="user" to="/account" class="btn btn-icon"><span class="material-symbols-outlined">
+  account_circle
+  </span></RouterLink>
+          <RouterLink v-else to="/log-in" class="btn btn-secondary btn-small">Login</RouterLink>
+        </nav>
       </div>
-      <nav>
-        <RouterLink to="/play" class="btn btn-primary btn-small">Card</RouterLink>
-        <RouterLink v-if="user" to="/account" class="btn btn-secondary btn-small">Account</RouterLink>
-        <RouterLink v-else to="/log-in" class="btn btn-secondary btn-small">Login</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+    </header>
+  
+    <RouterView />
+  </template>
+  <template v-else>
+    <AnimatedLoader :key="asdf"/>
+  </template>
 </template>
 
 <style lang="scss" scoped>
@@ -30,7 +36,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: white;
+  background-color: var(--col-secondary);
   z-index: 99;
 }
 .wrapper {

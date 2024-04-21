@@ -40,7 +40,9 @@ const gameStore = useGameStore();
                     </tr>
                     <tr>
                         <td class="hole hole-info">
-                            <button class="btn btn-add btn-small" @click="gameStore.addHole()">+</button>
+                            <button class="btn btn-icon" @click="gameStore.addHole()">
+                                <span class="material-symbols-outlined">add_circle</span>
+                            </button>
                         </td>
                     </tr>
                 </tbody>
@@ -75,14 +77,14 @@ td {
 tfoot {
     position: sticky;
     bottom: 0;
-    background: black;
-    color: white;
+    background: var(--col-primary);
+    color: var(--col-secondary);
     z-index: 50;
     td {
         padding: 1rem;
     }
     .hole-info {
-        background: black;
+        background: var(--col-primary);
         z-index: 70;
     }
 }
@@ -92,13 +94,13 @@ th {
 thead {
     position: sticky;
     top: 0;
-    background: white;
+    background: var(--col-secondary);
     z-index: 50;
 }
 .hole-info {
     position: sticky;
     left: 0;
-    background: white;
+    background: var(--col-secondary);
     z-index: 1;
 }
 .add-hole {
@@ -111,6 +113,6 @@ thead {
     }
 }
 .save-holder {
-    background: white;
+    background: var(--col-secondary);
 }
 </style>

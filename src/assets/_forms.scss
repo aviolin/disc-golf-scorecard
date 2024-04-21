@@ -24,15 +24,15 @@ textarea {
       justify-content: center;
       align-items: center;
       border-radius: 50%;
-      border: 1px solid black;
+      border: 1px solid var(--col-secondary);
       position: absolute;
       top: 0;
       left: 0;
-      background: white;
+      background: var(--col-primary);
       cursor: pointer;
   
       &:hover {
-        background: #eee;
+        background: var(--col-tertiary);
       }
     }
   
@@ -44,9 +44,9 @@ textarea {
     }
     
     input:checked + span {
-      background: black;
-      color: white;
-      border-color: black;
+      background: var(--col-secondary);
+      color: var(--col-primary);
+      border-color: var(--col-secondary);
     }
   
     input:focus-visible + span {

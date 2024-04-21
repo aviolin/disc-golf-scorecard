@@ -74,9 +74,13 @@ const canStartGame = computed(() => {
         <p>Players</p>
         <div v-for="player in players" :key="player.id" class="player-row">
           <input type="text" name="player" :placeholder="player.placeholder" v-model="player.name" />
-          <button class="btn btn-remove" @click.prevent="removePlayer(player.id)">X</button>
+          <button class="btn btn-warn btn-icon" @click.prevent="removePlayer(player.id)">
+            <span class="material-symbols-outlined">delete</span>
+          </button>
         </div>
-        <button class="btn btn-add" @click.prevent="addPlayer">Add Player +</button>
+        <button class="btn btn-add" @click.prevent="addPlayer">
+          <span class="material-symbols-outlined">person_add</span> Add Player
+        </button>
       </div>
       <div class="form-row">
         <button class="btn btn-primary" :disabled="!canStartGame">Start</button>

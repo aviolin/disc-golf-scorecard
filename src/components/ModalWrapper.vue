@@ -38,7 +38,7 @@ const emit = defineEmits([
     overflow-y: scroll;
     margin: auto;
     margin-top: 2rem;
-    background: white;
+    background: var(--col-secondary);
     padding: 1rem;
     position: relative;
 }
@@ -49,7 +49,7 @@ const emit = defineEmits([
     padding: 1rem;
     border: 0;
     background: transparent;
-    color: black;
+    color: var(--col-primary);
     cursor: pointer;
 }
 </style>

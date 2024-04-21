@@ -2,8 +2,16 @@
 @import './buttons';
 @import './forms';
 
+:root {
+  --col-primary: black;
+  --col-secondary: white;
+  --col-tertiary: #eee;
+  --col-danger: red;
+}
+
 html {
   box-sizing: border-box;
+  font-family: Montserrat, sans-serif;
 
   * {
     box-sizing: inherit;
@@ -12,6 +20,7 @@ html {
 
 body {
   padding-top: 2rem;
+  background: var(--col-secondary);
 }
 
 p,

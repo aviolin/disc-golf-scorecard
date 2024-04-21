@@ -27,17 +27,14 @@ const removePlayer = () => {
     <div class="button-holder">
         <input type="text" name="player" placeholder="Name" v-model="name" />
         <button class="btn btn-primary" @click="updateName">Save</button>
-        <button class="btn btn-remove" @click="removePlayer">Remove Player</button>
+        <button class="btn btn-remove" @click="removePlayer">
+            <span class="material-symbols-outlined">delete</span> Remove Player
+        </button>
     </div>
 </template>
 
 <style lang="scss" scoped>
-.btn-remove {
-    margin: 0;
-    display: block;
-}
 .btn-primary {
-    margin: 0;
     margin-bottom: 1rem;
 }
 </style>

@@ -24,7 +24,9 @@ const addPlayer = () => {
 
 <template>
     <template v-if="addButton">
-        <button class="btn btn-add" @click="addPlayer">+</button>
+        <button class="btn btn-add" @click="addPlayer">
+            <span class="material-symbols-outlined">person_add</span>
+        </button>
     </template>
     <template v-else>
         <button @click="modalOpen = true">

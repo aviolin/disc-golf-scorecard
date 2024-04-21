@@ -87,6 +87,19 @@ export const useGameStore = defineStore('gameStore', () => {
         holes.value = game.holes;
     }
 
+    const cloneGame = (game) => {
+        setGame(game)
+        players.value.forEach((player) => {
+            player.holes = player.holes.map((h) => {
+                return {
+                    id: h.id,
+                    score: '',
+                    notes: '',
+                }
+            })
+        })
+    }
+
     const setHole = (holeId, par, notes) => {
         const hole = holes.value.find((h) => h.id === holeId)
         if (!hole) return;
@@ -152,5 +165,5 @@ export const useGameStore = defineStore('gameStore', () => {
 
 
 
-    return { players, holes, setGame, addPlayer, removePlayer, setPlayers, updateName, addHole, setHole, setHoles, setScore, reset, setPar }
+    return { players, holes, cloneGame, setGame, addPlayer, removePlayer, setPlayers, updateName, addHole, setHole, setHoles, setScore, reset, setPar }
 })
