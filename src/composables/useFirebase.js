@@ -59,7 +59,7 @@ const useFirebase = () => {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
         // const uid = user.uid;
-        console.log('Auth state changed:', _user)
+        console.log('Auth state changed:')
         user.value = _user;
         getGames().then(() => {
           status.value = 'loaded';
@@ -74,7 +74,7 @@ const useFirebase = () => {
       }
     });
 
-    console.log('Firebase initialized', app.value, auth.value)
+    console.log('Firebase initialized')
   }
   if (!app.value) initializeFirebase();
 
@@ -86,7 +86,7 @@ const useFirebase = () => {
       .then((userCredential) => {
         // Signed up 
         const _user = userCredential.user;
-        console.log('Account created:', _user)
+        console.log('Account created:')
 
         updateProfile(_user, {
           displayName,
@@ -109,7 +109,7 @@ const useFirebase = () => {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        console.log('Logged in:', user)
+        console.log('Logged in:')
         router.push('/');
       })
       .catch((error) => {
