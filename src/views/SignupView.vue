@@ -2,6 +2,7 @@
 import { ref, onBeforeMount } from 'vue'
 import { router } from '@/router'
 import { useFirebase } from '@/composables/useFirebase'
+import AuthError from '@/components/AuthError.vue';
 
 const { createAccount, user } = useFirebase()
 
@@ -25,6 +26,7 @@ onBeforeMount(() => {
     <form class="signup-form">
         <h1>Sign up</h1>
         <p>Create an account to save your games, courses, and more.</p>
+        <AuthError />
         <div>
             <label for="display-name">Display name</label>
             <input type="text" id="display-name" v-model="displayName" />

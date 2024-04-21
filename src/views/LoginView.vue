@@ -2,8 +2,9 @@
 import { ref, onBeforeMount } from 'vue'
 import { router } from '@/router'
 import { useFirebase } from '@/composables/useFirebase'
+import AuthError from '@/components/AuthError.vue'
 
-const { login, user, auth, sendPasswordResetEmail } = useFirebase()
+const { login, user } = useFirebase()
 
 const email = ref('')
 const password = ref('')
@@ -23,6 +24,7 @@ onBeforeMount(() => {
 <template>
     <form class="login-form">
         <h1>Log in</h1>
+        <AuthError />
         <div>
             <label for="email">Email</label>
             <input type="email" id="email" v-model="email" />

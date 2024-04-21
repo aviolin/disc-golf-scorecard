@@ -45,6 +45,7 @@ const db = ref(null);
 const userGames = ref([]);
 
 const status = ref('loading');
+const error = ref(null);
 
 const useFirebase = () => {
 
@@ -56,13 +57,11 @@ const useFirebase = () => {
 
     onAuthStateChanged(auth.value, async (_user) => {
       if (_user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/auth.user
-        // const uid = user.uid;
         console.log('Auth state changed:')
         user.value = _user;
         getGames().then(() => {
           status.value = 'loaded';
+          error.value = null;
         })
         
       } else {
@@ -71,6 +70,7 @@ const useFirebase = () => {
         user.value = false;
         userGames.value = [];
         status.value = 'loaded';
+        error.value = null;
       }
     });
 
@@ -82,6 +82,7 @@ const useFirebase = () => {
   /* User Account Functions */
 
   const createAccount = (email, password, displayName) => {
+    error.value = null;
     createUserWithEmailAndPassword(auth.value, email, password)
       .then((userCredential) => {
         // Signed up 
@@ -90,21 +91,21 @@ const useFirebase = () => {
 
         updateProfile(_user, {
           displayName,
-        }).catch(function(error) {
-          console.log(error)
+        }).catch(function(err) {
+          console.log(err)
         }).then(() => {
           login(email, password)
         })
 
       })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.warn('Account creation failed:', errorMessage, errorCode)
+      .catch((err) => {
+        console.warn('Account creation failed:', err.message, err.code)
+        error.value = err.code;
       });
   }
 
   const login = (email, password) => {
+    error.value = null;
     signInWithEmailAndPassword(auth.value, email, password)
       .then((userCredential) => {
         // Signed in 
@@ -112,27 +113,29 @@ const useFirebase = () => {
         console.log('Logged in:')
         router.push('/');
       })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.warn('Login failed:', errorMessage, errorCode)
+      .catch((err) => {
+        console.warn('Login failed:', err.message, err.code)
+        error.value = err.code;
       });
   }
 
   const logout = () => {
+    error.value = null;
     signOut(auth.value)
       .then(() => {
         console.log('Logged out')
         user.value = false;
         status.value = 'loaded';
         router.push('/');
+        error.value = null;
       })
-      .catch((error) => {
-        console.warn('Logout failed:', error)
+      .catch((err) => {
+        console.warn('Logout failed:', err)
       });
   }
 
   const reauthenticate = (password) => {
+    error.value = null;
     const credential = EmailAuthProvider.credential(user.value.email, password);
     return reauthenticateWithCredential(user.value, credential)
   }
@@ -163,8 +166,8 @@ const useFirebase = () => {
       console.log('collection:', collectionName)
       await deleteDoc(doc(db.value, collectionName, id));
       console.log("Document deleted: ", id);
-    } catch (e) {
-      console.error("Error deleting document: ", e);
+    } catch (err) {
+      console.error("Error deleting document: ", err);
     }
   }
 
@@ -185,7 +188,8 @@ const useFirebase = () => {
 
 
   return { 
-    app, auth, user, db, status,
+    app, auth, user, db, 
+    status, error,
     updateProfile,updateEmail, updatePassword, deleteUser,
     createAccount, login, logout, reauthenticate, sendPasswordResetEmail,
     addDocument, getDocument, deleteDocument,
