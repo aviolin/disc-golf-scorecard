@@ -30,9 +30,11 @@ textarea {
       left: 0;
       background: var(--col-primary);
       cursor: pointer;
-  
+      color: var(--col-secondary);
+      
       &:hover {
         background: var(--col-tertiary);
+        color: var(--col-primary);
       }
     }
   

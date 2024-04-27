@@ -33,8 +33,8 @@ const emit = defineEmits([
 }
 .modal-inner {
     max-width: min(calc(100% - 4rem), 600px);
-    min-width: calc(100vw - 4rem);
     max-height: calc(100vh - 4rem);
+    max-height: calc(100svh - 4rem);
     overflow-y: scroll;
     margin: auto;
     margin-top: 2rem;

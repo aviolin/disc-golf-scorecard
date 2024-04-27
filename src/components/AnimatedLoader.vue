@@ -13,6 +13,7 @@
     align-items: center;
     justify-content: center;
     height: 80vh;
+    height: 80svh;
 }
 .lds-circle {
   color: #ff7700;
