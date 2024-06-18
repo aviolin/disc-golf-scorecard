@@ -22,7 +22,7 @@ const save = () => {
             console.error('Error updating email: ',error)
         });
     }).catch((error) => {
-        console.log('Error reauthenticating: ', error)
+        console.error('Error reauthenticating: ', error)
     })
 }
 

@@ -16,7 +16,7 @@
     height: 80svh;
 }
 .lds-circle {
-  color: #ff7700;
+  color: var(--col-orange);
 }
 .lds-circle,
 .lds-circle div {
@@ -36,15 +36,11 @@
   animation: lds-circle 2.4s infinite;
 }
 @keyframes lds-circle {
-  0%, 100% {
-    // animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
-  }
   0% {
     transform: rotateY(0deg);
   }
   50% {
     transform: rotateY(180deg);
-    // animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
   }
   100% {
     transform: rotateY(360deg);

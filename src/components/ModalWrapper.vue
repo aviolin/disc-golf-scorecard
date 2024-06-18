@@ -50,7 +50,7 @@ const emit = defineEmits([
     padding: 1rem;
     border: 0;
     background: transparent;
-    color: var(--col-primary);
+    color: var(--col-black);
     cursor: pointer;
 }
 </style>

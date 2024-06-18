@@ -1,21 +1,18 @@
 @import './normalize';
 @import './buttons';
 @import './forms';
+@import './account';
 
 :root {
-  --col-primary: black;
-  --col-secondary: white;
-  --col-tertiary: #eee;
   --col-danger: red;
-
+  --col-black: #000;
   --col-dark-gray: #555;
   --col-gray: gray;
-  --col-light-gray: #ddd;
   --col-mid-gray: #999;
+  --col-light-gray: #ddd;
   --col-offwhite: #eee;
   --col-white: #fff;
-  --col-black: #000;
-  --col-purple: purple;
+  --col-orange: yellow;
 
   --border-radius: .5rem;
 }
@@ -30,23 +27,24 @@ html {
 }
 
 body {
-  padding-top: 2rem;
   background: var(--col-gray);
   color: var(--col-white);
 }
 
 p,
 label {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     margin-block: 1.5rem;
     display: block;
 }
 
-.account-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: .5rem;
-    flex-wrap: wrap;
-    margin-block: 1rem;
+a {
+  color: var(--col-orange);
+}
+
+.container {
+  max-width: 576px;
+  margin: auto;
+  margin-top: 3rem;
+  min-height: calc(100vh - 10rem);
 }

@@ -22,7 +22,7 @@ const sendEmail = () => {
 </script>
 
 <template>
-    <form class="login-form" @submit.prevent="sendEmail">
+    <form class="login-form container" @submit.prevent="sendEmail">
         <h1>Reset your password</h1>
         <div>
             <label for="email">Email</label>

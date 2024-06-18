@@ -18,7 +18,7 @@ onBeforeMount(() => {
 </script>
 
 <template>
-    <form class="account" :key="user">
+    <form class="account container" :key="user">
         <h1>My account</h1>
         <button @click="logout" class="btn btn-secondary btn-small">
             <span class="material-symbols-outlined">logout</span> Logout
@@ -33,8 +33,5 @@ onBeforeMount(() => {
 <style lang="scss" scoped>
 .account {
     padding: 2rem;
-    max-width: 768px;
-    margin: auto;
-    margin-top: 3rem;
 }
 </style>

@@ -44,7 +44,7 @@ const message = computed(() => {
 .error {
     background: var(--col-danger);
     border-radius: var(--border-radius);
-    color: var(--col-secondary);
+    color: var(--col-white);
     padding: 1rem;
     font-size: 1rem;
 }

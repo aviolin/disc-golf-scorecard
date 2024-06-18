@@ -23,7 +23,7 @@ onBeforeMount(() => {
 </script>
 
 <template>
-    <form class="signup-form">
+    <form class="signup-form container">
         <h1>Sign up</h1>
         <p>Create an account to save your games, courses, and more.</p>
         <AuthError />

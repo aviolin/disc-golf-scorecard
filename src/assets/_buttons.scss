@@ -2,7 +2,7 @@
     padding: 0.5rem 1rem;
     border: 0;
     background: var(--col-black);
-    color: var(--col-secondary);
+    color: var(--col-white);
     border-radius: var(--border-radius);
     text-decoration: none;
     display: inline-flex;
@@ -18,7 +18,7 @@
     }
   
     &.btn-add {
-      background: var(--col-secondary);
+      background: var(--col-white);
       color: black;
 
       &:hover {
@@ -32,15 +32,15 @@
     &.btn-primary {
       padding: 1rem;
       border: 0;
-      color: var(--col-secondary);
+      color: var(--col-white);
       width: 100%;
       cursor: pointer;
     }
     &.btn-secondary {
       padding: 1rem;
       border: 0;
-      color: var(--col-primary);
-      background: var(--col-secondary);
+      color: var(--col-black);
+      background: var(--col-white);
       cursor: pointer;
 
       &:hover {
@@ -57,7 +57,7 @@
     }
     &.btn-icon {
       background: transparent;
-      color: var(--col-primary);
+      color: var(--col-black);
       border: 0;
       padding: 0;
       margin: 0;
@@ -68,7 +68,7 @@
       }
     }
     &:disabled {
-      background: var(--col-tertiary);;
+      background: var(--col-offwhite);
       color: #666;
       cursor: not-allowed;
     }

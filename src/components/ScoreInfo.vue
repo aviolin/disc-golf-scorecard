@@ -66,6 +66,7 @@ button {
     border: 0;
     padding: 1rem;
     cursor: pointer;
+    min-width: 6rem;
 
 }
 td {

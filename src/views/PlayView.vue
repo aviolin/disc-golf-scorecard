@@ -18,7 +18,6 @@ const gameStore = useGameStore();
         </div>
         <template v-else>
             <div class="table-wrapper">
-
                 <table class="scorecard">
                     <thead>
                         <tr>
@@ -87,14 +86,14 @@ td {
 tfoot {
     position: sticky;
     bottom: 0;
-    background: var(--col-primary);
-    color: var(--col-secondary);
+    background: var(--col-black);
+    color: var(--col-white);
     z-index: 50;
     td {
         padding: 1rem;
     }
     .hole-info {
-        background: var(--col-primary);
+        background: var(--col-black);
         z-index: 70;
     }
 }
@@ -104,7 +103,7 @@ th {
 thead {
     position: sticky;
     top: 0;
-    background: var(--col-secondary);
+    background: var(--col-white);
     z-index: 50;
 }
 .hole-info {
@@ -132,7 +131,7 @@ thead {
     }
 }
 .save-holder {
-    background: var(--col-secondary);
+    background: var(--col-white);
 }
 .btn.btn-icon {
     width: 100%;

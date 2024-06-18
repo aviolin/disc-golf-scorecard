@@ -29,14 +29,14 @@ textarea {
       position: absolute;
       top: 0;
       left: 0;
-      background: var(--col-primary);
+      background: var(--col-black);
       cursor: pointer;
-      color: var(--col-secondary);
+      color: var(--col-white);
       transition: .3s;
       
       &:hover {
-        background: var(--col-tertiary);
-        color: var(--col-primary);
+        background: var(--col-offwhite);
+        color: var(--col-black);
       }
     }
   
@@ -48,9 +48,9 @@ textarea {
     }
     
     input:checked + span {
-      background: var(--col-secondary);
-      color: var(--col-primary);
-      border-color: var(--col-secondary);
+      background: var(--col-white);
+      color: var(--col-black);
+      border-color: var(--col-white);
     }
   
     input:focus-visible + span {

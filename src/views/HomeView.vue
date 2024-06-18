@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref, watch } from 'vue'
+import { watch } from 'vue';
 import { useFirebase } from '@/composables/useFirebase'
 import { useGameStore } from '@/stores/game'
 import { router } from '@/router'
@@ -7,7 +7,6 @@ import NewGameButton from '@/components/NewGameButton.vue'
 
 const { status, user, userGames, deleteDocument, getGames } = useFirebase()
 const gameStore = useGameStore()
-const currentUID = ref('')
 
 const loadGame = (game) => {
     gameStore.setGame(game);
@@ -24,14 +23,10 @@ const deleteGame = (game) => {
     getGames();
 } 
 
-const shareGame = (game) => {
-    console.log('share', game)
-}
-
 </script>
 
 <template>
-    <form v-if="status !== 'loading'" class="archive">
+    <form v-if="status !== 'loading'" class="archive container">
         <h1>My games</h1>
         <NewGameButton />
         <p v-if="!userGames.length && user">
@@ -45,7 +40,7 @@ const shareGame = (game) => {
                 <div class="game-row">
                     <button class="btn btn-game btn-icon" @click.prevent="loadGame(game)">
                         {{ game.name }}
-                        <time :datetime="game.date">{{ new Date(game.date).toLocaleDateString('en-us') }}</time>
+                        <time :datetime="game.date">{{ new Date(game.date).toLocaleDateString('en-us', {timeZone: 'UTC'}) }}</time>
                     </button>
                     <div class="game-row__buttons">
                         <div class="main-buttons">
@@ -55,9 +50,6 @@ const shareGame = (game) => {
                             <button class="btn btn-icon" @click.prevent="cloneGame(game)">
                                 <span class="material-symbols-outlined">content_copy</span> Clone
                             </button>
-                            <!-- <button class="btn btn-icon" @click.prevent="shareGame(game)">
-                                <span class="material-symbols-outlined">share</span> Share
-                            </button> -->
                         </div>
                         <button class="btn btn-icon btn-warn" @click.prevent="deleteGame(game)">
                             <span class="material-symbols-outlined">delete</span>
@@ -73,9 +65,6 @@ const shareGame = (game) => {
 .archive {
     padding: 2rem;
     padding-bottom: 10rem;
-    max-width: 768px;
-    margin: auto;
-    margin-top: 3rem;
 }
 ul {
     list-style-type: none;
@@ -100,7 +89,7 @@ li {
 .btn-game {
     background: none;
     border: 0;
-    color: var(--col-primary);
+    color: var(--col-black);
     font-size: 1.5rem;
     margin-bottom: .5rem;
     display: flex;

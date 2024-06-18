@@ -83,8 +83,24 @@ export const useGameStore = defineStore('gameStore', () => {
     }
 
     const setGame = (game) => {
-        players.value = game.players
-        holes.value = game.holes;
+        players.value = [];
+        holes.value = [];
+        game.players.forEach((player) => {
+            players.value.push({
+                id: player.id,
+                name: player.name,
+                holes: player.holes,
+                total: player.total,
+            })
+        })
+
+        game.holes.forEach((hole) => {
+            holes.value.push({
+                id: hole.id,
+                par: hole.par,
+                notes: hole.notes,
+            })
+        })
     }
 
     const cloneGame = (game) => {
@@ -162,8 +178,6 @@ export const useGameStore = defineStore('gameStore', () => {
 
     watch(players, updateLocalStorage, { deep: true })
     watch(holes, updateLocalStorage, { deep: true })
-
-
 
     return { players, holes, cloneGame, setGame, addPlayer, removePlayer, setPlayers, updateName, addHole, setHole, setHoles, setScore, reset, setPar }
 })

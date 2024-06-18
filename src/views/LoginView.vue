@@ -22,7 +22,7 @@ onBeforeMount(() => {
 </script>
 
 <template>
-    <form class="login-form">
+    <form class="login-form container">
         <h1>Log in</h1>
         <AuthError />
         <div>

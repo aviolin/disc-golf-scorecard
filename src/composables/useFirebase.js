@@ -190,7 +190,7 @@ const useFirebase = () => {
   return { 
     app, auth, user, db, 
     status, error,
-    updateProfile,updateEmail, updatePassword, deleteUser,
+    updateProfile, updateEmail, updatePassword, deleteUser,
     createAccount, login, logout, reauthenticate, sendPasswordResetEmail,
     addDocument, getDocument, deleteDocument,
     userGames, getGames
