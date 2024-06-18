@@ -24,7 +24,7 @@ const { status, user } = useFirebase()
     <RouterView />
 
     <footer>
-      <a href="https://github.com/aviolin/flash-cards/">View the source on GitHub.</a>
+      <a href="https://github.com/aviolin/disc-golf-scorecard/">View the source on GitHub.</a>
       <small>© Copyright 2024, Arlo Adams.</small>
     </footer>
   </template>

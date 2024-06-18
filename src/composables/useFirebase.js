@@ -57,7 +57,7 @@ const useFirebase = () => {
 
     onAuthStateChanged(auth.value, async (_user) => {
       if (_user) {
-        console.log('Auth state changed:')
+        // console.log('Auth state changed:')
         user.value = _user;
         getGames().then(() => {
           status.value = 'loaded';
@@ -66,15 +66,13 @@ const useFirebase = () => {
         
       } else {
         // User is signed out
-        console.log('Auth state changed: user signed out')
+        // console.log('Auth state changed: user signed out')
         user.value = false;
         userGames.value = [];
         status.value = 'loaded';
         error.value = null;
       }
     });
-
-    console.log('Firebase initialized')
   }
   if (!app.value) initializeFirebase();
 
@@ -87,12 +85,12 @@ const useFirebase = () => {
       .then((userCredential) => {
         // Signed up 
         const _user = userCredential.user;
-        console.log('Account created:')
+        // console.log('Account created:')
 
         updateProfile(_user, {
           displayName,
         }).catch(function(err) {
-          console.log(err)
+          console.error(err)
         }).then(() => {
           login(email, password)
         })
@@ -110,7 +108,6 @@ const useFirebase = () => {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        console.log('Logged in:')
         router.push('/');
       })
       .catch((err) => {
@@ -123,7 +120,6 @@ const useFirebase = () => {
     error.value = null;
     signOut(auth.value)
       .then(() => {
-        console.log('Logged out')
         user.value = false;
         status.value = 'loaded';
         router.push('/');
@@ -146,7 +142,6 @@ const useFirebase = () => {
   const addDocument = async (collectionName, values) => {
     try {
       const docRef = await addDoc(collection(db.value, collectionName), values);
-      console.log("Document written with ID: ", docRef.id);
       getGames();
       return docRef.id;
     } catch (e) {
@@ -157,15 +152,11 @@ const useFirebase = () => {
   const getDocument = async (collectionName, id) => {
     const querySnapshot = await getDocs(collection(db.value, collectionName));
     const doc = querySnapshot.find(doc => doc.id === id);
-    console.log(doc);
   }
 
   const deleteDocument = async (collectionName, id) => {
     try {
-      console.log('id:', id)
-      console.log('collection:', collectionName)
       await deleteDoc(doc(db.value, collectionName, id));
-      console.log("Document deleted: ", id);
     } catch (err) {
       console.error("Error deleting document: ", err);
     }
@@ -178,7 +169,6 @@ const useFirebase = () => {
     const games = [];
 
     querySnapshot.forEach((doc) => {
-      console.log(doc.id)
       games.push(doc.data());
       games[games.length - 1].id = doc.id;
     });
