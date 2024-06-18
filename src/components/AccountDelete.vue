@@ -40,5 +40,6 @@ const save = () => {
 
 .delete-button-wrapper {
     margin-top: 3rem;
+    text-align: right;
 }
 </style>

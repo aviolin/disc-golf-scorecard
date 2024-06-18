@@ -33,6 +33,7 @@ const shareGame = (game) => {
 <template>
     <form v-if="status !== 'loading'" class="archive">
         <h1>My games</h1>
+        <NewGameButton />
         <p v-if="!userGames.length && user">
             No games found.
         </p>
@@ -43,16 +44,21 @@ const shareGame = (game) => {
             <li v-for="game in userGames" :key="game.id">
                 <div class="game-row">
                     <button class="btn btn-game btn-icon" @click.prevent="loadGame(game)">
-                        <span class="material-symbols-outlined">edit</span>
-                        {{ game.name }}</button>
+                        {{ game.name }}
+                        <time :datetime="game.date">{{ new Date(game.date).toLocaleDateString('en-us') }}</time>
+                    </button>
                     <div class="game-row__buttons">
-                        <time :datetime="game.date"><span class="material-symbols-outlined">calendar_month</span>{{ game.date }}</time>
-                        <button class="btn btn-icon" @click.prevent="cloneGame(game)">
-                            <span class="material-symbols-outlined">content_copy</span> Clone
-                        </button>
-                        <button class="btn btn-icon" @click.prevent="shareGame(game)">
-                            <span class="material-symbols-outlined">share</span> Share
-                        </button>
+                        <div class="main-buttons">
+                            <button class="btn btn-icon" @click.prevent="loadGame(game)">
+                                <span class="material-symbols-outlined">visibility</span> View
+                            </button>
+                            <button class="btn btn-icon" @click.prevent="cloneGame(game)">
+                                <span class="material-symbols-outlined">content_copy</span> Clone
+                            </button>
+                            <!-- <button class="btn btn-icon" @click.prevent="shareGame(game)">
+                                <span class="material-symbols-outlined">share</span> Share
+                            </button> -->
+                        </div>
                         <button class="btn btn-icon btn-warn" @click.prevent="deleteGame(game)">
                             <span class="material-symbols-outlined">delete</span>
                         </button>
@@ -60,9 +66,6 @@ const shareGame = (game) => {
                 </div>
             </li>
         </ul>
-        <div class="bottom-buttons">
-            <NewGameButton />
-        </div>
     </form>
 </template>
 
@@ -70,6 +73,9 @@ const shareGame = (game) => {
 .archive {
     padding: 2rem;
     padding-bottom: 10rem;
+    max-width: 768px;
+    margin: auto;
+    margin-top: 3rem;
 }
 ul {
     list-style-type: none;
@@ -80,9 +86,15 @@ li {
     justify-content: space-between;
     margin-bottom: 1rem;
     width: 100%;
-    background: var(--col-tertiary);
+    background: var(--col-offwhite);
     padding: 1rem;
-    border-radius: .5rem;
+    border-radius: var(--border-radius);
+    color: var(--col-black);
+    transition: .3s;
+
+    &:hover {
+        background: var(--col-white);
+    }
 }
 
 .btn-game {
@@ -91,6 +103,10 @@ li {
     color: var(--col-primary);
     font-size: 1.5rem;
     margin-bottom: .5rem;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
 }
 .game-row {
     width: 100%;
@@ -100,25 +116,19 @@ li {
     flex-wrap: wrap;
     justify-content: space-between;
     width: 100%;
+}
+.main-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
 
 }
 
-datetime {
+time {
     display: flex;
     align-items: center;
     gap: .5rem;
-}
-
-.bottom-buttons {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 1rem 2rem;
-    background: var(--col-secondary);
-
-    .btn {
-        width: 100%;
-    }
+    font-size: .75rem;
 }
 </style>

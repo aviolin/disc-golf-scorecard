@@ -36,6 +36,7 @@ button {
     position: relative;
     padding: 1rem;
     cursor: pointer;
+    color: var(--col-white);
 }
 .hole-number {
     position: absolute;

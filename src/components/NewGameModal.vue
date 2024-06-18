@@ -129,4 +129,7 @@ small {
     margin: 0;
   }
 }
+.btn.btn-icon.btn-warn {
+  color: var(--col-white);
+}
 </style>

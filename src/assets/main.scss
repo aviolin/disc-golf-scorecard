@@ -7,6 +7,17 @@
   --col-secondary: white;
   --col-tertiary: #eee;
   --col-danger: red;
+
+  --col-dark-gray: #555;
+  --col-gray: gray;
+  --col-light-gray: #ddd;
+  --col-mid-gray: #999;
+  --col-offwhite: #eee;
+  --col-white: #fff;
+  --col-black: #000;
+  --col-purple: purple;
+
+  --border-radius: .5rem;
 }
 
 html {
@@ -20,7 +31,8 @@ html {
 
 body {
   padding-top: 2rem;
-  background: var(--col-secondary);
+  background: var(--col-gray);
+  color: var(--col-white);
 }
 
 p,

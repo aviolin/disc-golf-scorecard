@@ -20,12 +20,12 @@ onBeforeMount(() => {
 <template>
     <form class="account" :key="user">
         <h1>My account</h1>
-        <AccountDisplayName />
-        <AccountEmail />
-        <AccountPassword />
         <button @click="logout" class="btn btn-secondary btn-small">
             <span class="material-symbols-outlined">logout</span> Logout
         </button>
+        <AccountDisplayName />
+        <AccountEmail />
+        <AccountPassword />
         <AccountDelete />
     </form>
 </template>
@@ -33,5 +33,8 @@ onBeforeMount(() => {
 <style lang="scss" scoped>
 .account {
     padding: 2rem;
+    max-width: 768px;
+    margin: auto;
+    margin-top: 3rem;
 }
 </style>

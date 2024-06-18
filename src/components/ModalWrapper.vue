@@ -25,7 +25,7 @@ const emit = defineEmits([
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.66);
     z-index: 100;
     display: flex;
     justify-content: center;
@@ -38,9 +38,10 @@ const emit = defineEmits([
     overflow-y: scroll;
     margin: auto;
     margin-top: 2rem;
-    background: var(--col-secondary);
+    background: var(--col-gray);
     padding: 1rem;
     position: relative;
+    border-radius: var(--border-radius);
 }
 .btn-close {
     position: absolute;

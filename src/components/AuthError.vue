@@ -43,7 +43,7 @@ const message = computed(() => {
 <style lang="scss" scoped>
 .error {
     background: var(--col-danger);
-    border-radius: .5rem;
+    border-radius: var(--border-radius);
     color: var(--col-secondary);
     padding: 1rem;
     font-size: 1rem;

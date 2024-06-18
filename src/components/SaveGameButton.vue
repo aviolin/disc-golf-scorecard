@@ -15,3 +15,9 @@ const modalOpen = ref(false)
         <SaveModal :modal="modal"/>
     </ModalWrapper>
 </template>
+
+<style lang="scss" scoped>
+.btn-icon {
+    width: 100%;
+}
+</style>

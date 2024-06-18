@@ -6,6 +6,8 @@ textarea {
   padding: 1rem;
   margin-bottom: 1rem;
   width: 100%;
+  border-radius: var(--border-radius);
+  border: 0;
 }
 
 textarea {
@@ -24,13 +26,13 @@ textarea {
       justify-content: center;
       align-items: center;
       border-radius: 50%;
-      border: 1px solid var(--col-secondary);
       position: absolute;
       top: 0;
       left: 0;
       background: var(--col-primary);
       cursor: pointer;
       color: var(--col-secondary);
+      transition: .3s;
       
       &:hover {
         background: var(--col-tertiary);

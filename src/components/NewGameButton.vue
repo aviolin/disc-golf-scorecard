@@ -32,7 +32,6 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 .btn {
-    width: 100%;
     min-height: 3rem;
 }
 </style>

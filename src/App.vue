@@ -36,7 +36,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: var(--col-secondary);
+  background-color: var(--col-mid-gray);
   z-index: 99;
 }
 .wrapper {
@@ -54,7 +54,8 @@ nav {
   align-items: center;
   gap: .5rem;
   text-decoration: none;
-  color: black;
+  color: var(--col-white);
+  font-weight: 700;
   img {
     width: 2rem;
   }
