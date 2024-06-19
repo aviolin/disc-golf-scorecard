@@ -1,5 +1,4 @@
 <script setup>
-import { watch } from 'vue';
 import { useFirebase } from '@/composables/useFirebase'
 import { useGameStore } from '@/stores/game'
 import { router } from '@/router'
@@ -75,28 +74,27 @@ li {
     justify-content: space-between;
     margin-bottom: 1rem;
     width: 100%;
-    background: var(--col-offwhite);
+    background: var(--col-dark-gray);
     padding: 1rem;
     border-radius: var(--border-radius);
     color: var(--col-black);
     transition: .3s;
 
     &:hover {
-        background: var(--col-white);
+        background: var(--col-accent);
     }
 }
 
 .btn-game {
     background: none;
     border: 0;
-    color: var(--col-black);
+    color: var(--col-offwhite);
     font-size: 1.5rem;
     margin-bottom: .5rem;
     display: flex;
     justify-content: space-between;
     width: 100%;
     text-align: left;
-
 }
 .game-row {
     width: 100%;

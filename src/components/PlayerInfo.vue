@@ -24,7 +24,7 @@ const addPlayer = () => {
 
 <template>
     <template v-if="addButton">
-        <button class="btn btn-add" @click="addPlayer">
+        <button class="btn btn-icon" @click="addPlayer">
             <span class="material-symbols-outlined">person_add</span>
         </button>
     </template>
@@ -52,6 +52,7 @@ button {
     font-weight: 700;
     min-width: 1rem;
     min-height: 1rem;
+    color: var(--col-white);
     cursor: pointer;
 }
 .hole-number {
@@ -59,8 +60,5 @@ button {
     top: 0;
     left: 0;
     font-size: .75rem;
-}
-.btn-add {
-    border: 0;
 }
 </style>

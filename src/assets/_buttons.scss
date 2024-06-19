@@ -1,7 +1,7 @@
 .btn {
     padding: 0.5rem 1rem;
     border: 0;
-    background: var(--col-black);
+    background: var(--col-accent);
     color: var(--col-white);
     border-radius: var(--border-radius);
     text-decoration: none;
@@ -14,7 +14,7 @@
     cursor: pointer;
 
     &:hover {
-      background: var(--col-dark-gray);
+      background: var(--col-accent-light);
     }
   
     &.btn-add {
@@ -39,13 +39,7 @@
     &.btn-secondary {
       padding: 1rem;
       border: 0;
-      color: var(--col-black);
-      background: var(--col-white);
       cursor: pointer;
-
-      &:hover {
-        background: var(--col-offwhite);
-      }
     }
     &.btn-warn {
       background: var(--col-danger);
@@ -57,7 +51,7 @@
     }
     &.btn-icon {
       background: transparent;
-      color: var(--col-black);
+      color: var(--col-offwhite);
       border: 0;
       padding: 0;
       margin: 0;

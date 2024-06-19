@@ -14,7 +14,9 @@ const { status, user } = useFirebase()
           <RouterLink to="/" class="logo"><img src="/favicon.svg"><i>Disc Golf Scorecard</i></RouterLink>
         </div>
         <nav>
-          <RouterLink to="/play" class="btn btn-primary btn-small">Current Card</RouterLink>
+          <RouterLink to="/play" class="btn btn-primary btn-small">
+            <span class="material-symbols-outlined">visibility</span> Card
+          </RouterLink>
           <RouterLink v-if="user" to="/account" class="btn btn-icon"><span class="material-symbols-outlined">account_circle</span></RouterLink>
           <RouterLink v-else to="/log-in" class="btn btn-secondary btn-small">Login</RouterLink>
         </nav>
@@ -39,7 +41,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: var(--col-mid-gray);
+  background-color: var(--col-dark-gray);
   z-index: 99;
 }
 footer {

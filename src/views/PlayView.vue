@@ -21,13 +21,13 @@ const gameStore = useGameStore();
                 <table class="scorecard">
                     <thead>
                         <tr>
-                            <th class="hole hole-info save-holder">
+                            <th class="hole hole-info btn-td">
                                 <SaveGame />
                             </th>
-                            <th v-for="(player, index) in gameStore.players" :key="index">
+                            <th v-for="(player, index) in gameStore.players" :key="index" class="player-info">
                                 <PlayerInfo :player="player" />
                             </th>
-                            <th class="add-player">
+                            <th class="btn-td">
                                 <PlayerInfo :player="{}" :addButton="true" />
                             </th>
                         </tr>
@@ -40,7 +40,7 @@ const gameStore = useGameStore();
                             <HoleScore :player="player" :hole="hole" v-for="(player, playerIndex) in gameStore.players" :key="playerIndex" />
                         </tr>
                         <tr>
-                            <td class="hole hole-info">
+                            <td class="hole hole-info btn-td">
                                 <button class="btn btn-icon" @click="gameStore.addHole()">
                                     <span class="material-symbols-outlined">add_circle</span>
                                 </button>
@@ -71,7 +71,7 @@ const gameStore = useGameStore();
     width: 100vw;
     height: calc(100vh - 4rem);
     height: calc(100dvh - 4rem);
-    overflow: scroll;
+    overflow: auto;
 }
 .table-wrapper {
     min-width: min(768px, 100%);
@@ -125,15 +125,23 @@ thead {
     padding-block: 1rem;
     text-align: center;
 }
-.add-player {
-    .btn {
-        border: 0;
-    }
-}
-.save-holder {
-    background: var(--col-white);
-}
 .btn.btn-icon {
     width: 100%;
+}
+
+.btn-td {
+    background: var(--col-accent);
+    transition: .3s;
+    &:hover {
+        background: var(--col-accent-light);
+    }
+}
+
+.player-info {
+    background: var(--col-accent-light);
+    transition: .3s;
+    &:hover {
+        background: var(--col-accent);
+    }
 }
 </style>

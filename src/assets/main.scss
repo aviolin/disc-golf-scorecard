@@ -2,17 +2,21 @@
 @import './buttons';
 @import './forms';
 @import './account';
+@import './scrollbars';
 
 :root {
   --col-danger: red;
-  --col-black: #000;
-  --col-dark-gray: #555;
+  --col-black: #111;
+  --col-dark-gray: #333;
   --col-gray: gray;
   --col-mid-gray: #999;
   --col-light-gray: #ddd;
   --col-offwhite: #eee;
   --col-white: #fff;
   --col-orange: yellow;
+
+  --col-accent: #590de5;
+  --col-accent-light: #8c40ff;
 
   --border-radius: .5rem;
 }
@@ -27,7 +31,7 @@ html {
 }
 
 body {
-  background: var(--col-gray);
+  background: var(--col-black);
   color: var(--col-white);
 }
 
@@ -39,7 +43,7 @@ label {
 }
 
 a {
-  color: var(--col-orange);
+  color: var(--col-white);
 }
 
 .container {

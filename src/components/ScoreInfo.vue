@@ -72,7 +72,7 @@ button {
 td {
     text-align: center;
     border: 0;
-    background: #f9f9f9;
+    background: var(--col-gray);
     transition: 0.5s;
 
     &.score {
@@ -86,7 +86,7 @@ td {
             background: #bbffaa;
         }
         &-par {
-            background: #eee;
+            background: lightblue;
         }
         &-bogey {
             background: #FFa0aB;

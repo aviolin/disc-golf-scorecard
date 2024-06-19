@@ -34,4 +34,9 @@ onBeforeMount(() => {
 .account {
     padding: 2rem;
 }
+.btn {
+    margin-left: 100%;
+    transform: translateX(-100%);
+    margin-bottom: 1.75rem;
+}
 </style>
