@@ -95,6 +95,7 @@ li {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    text-align: left;
 
 }
 .game-row {

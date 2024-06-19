@@ -44,6 +44,7 @@ header {
 }
 footer {
   margin-top: 3rem;
+  margin-bottom: 1rem;
   text-align: center;
   display: flex;
   flex-direction: column;
