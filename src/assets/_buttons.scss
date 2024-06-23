@@ -62,8 +62,7 @@
       }
     }
     &:disabled {
-      background: var(--col-offwhite);
-      color: #666;
+      opacity: .5;
       cursor: not-allowed;
     }
 }

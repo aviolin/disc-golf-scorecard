@@ -26,8 +26,8 @@ const removePlayer = () => {
     <p>Enter the player's name:</p>
     <div class="button-holder">
         <input type="text" name="player" placeholder="Name" v-model="name" />
-        <button class="btn btn-primary" @click="updateName">Save</button>
-        <button class="btn btn-remove" @click="removePlayer">
+        <button class="btn btn-primary" @click.prevent="updateName">Save</button>
+        <button class="btn btn-remove" @click.prevent="removePlayer">
             <span class="material-symbols-outlined">delete</span> Remove Player
         </button>
     </div>

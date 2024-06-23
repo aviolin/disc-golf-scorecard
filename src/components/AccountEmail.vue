@@ -32,7 +32,7 @@ const save = () => {
     <div>
         <div class="account-row">
             <span>{{ user?.email }}</span>
-            <button @click="modalOpen = true" class="btn btn-secondary btn-small">Change email</button>
+            <button @click.prevent="modalOpen = true" class="btn btn-secondary btn-small">Change email</button>
         </div>
         <ModalWrapper 
             v-if="modalOpen" 

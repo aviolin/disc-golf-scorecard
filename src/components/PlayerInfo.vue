@@ -24,12 +24,12 @@ const addPlayer = () => {
 
 <template>
     <template v-if="addButton">
-        <button class="btn btn-icon" @click="addPlayer">
+        <button class="btn btn-icon" @click.prevent="addPlayer">
             <span class="material-symbols-outlined">person_add</span>
         </button>
     </template>
     <template v-else>
-        <button @click="modalOpen = true">
+        <button @click.prevent="modalOpen = true">
             {{ player.name }}
         </button>
     </template>

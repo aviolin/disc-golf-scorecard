@@ -15,7 +15,7 @@ const setModalOpen = (value) => {
 </script>
 
 <template>
-    <button @click="() => setModalOpen(true)">
+    <button @click.prevent="() => setModalOpen(true)">
         <span class="hole-number">{{ hole.id + 1 }}</span>
         <b>{{ hole.par }}</b>
     </button>

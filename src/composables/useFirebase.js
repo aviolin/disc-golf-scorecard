@@ -27,6 +27,8 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 
+import { useGameStore } from "@/stores/game";
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -49,6 +51,8 @@ const error = ref(null);
 
 const useFirebase = () => {
 
+  const gameStore = useGameStore();
+
   // Initialize Firebase
   const initializeFirebase = () => {
     app.value = initializeApp(firebaseConfig);
@@ -57,7 +61,7 @@ const useFirebase = () => {
 
     onAuthStateChanged(auth.value, async (_user) => {
       if (_user) {
-        // console.log('Auth state changed:')
+        console.log('Auth state changed:')
         user.value = _user;
         getGames().then(() => {
           status.value = 'loaded';
@@ -66,11 +70,12 @@ const useFirebase = () => {
         
       } else {
         // User is signed out
-        // console.log('Auth state changed: user signed out')
+        console.log('Auth state changed: user signed out')
         user.value = false;
         userGames.value = [];
         status.value = 'loaded';
         error.value = null;
+        gameStore.removeLocalStorage();
       }
     });
   }
@@ -85,7 +90,7 @@ const useFirebase = () => {
       .then((userCredential) => {
         // Signed up 
         const _user = userCredential.user;
-        // console.log('Account created:')
+        console.log('Account created:')
 
         updateProfile(_user, {
           displayName,
@@ -149,11 +154,6 @@ const useFirebase = () => {
     }    
   }
 
-  const getDocument = async (collectionName, id) => {
-    const querySnapshot = await getDocs(collection(db.value, collectionName));
-    const doc = querySnapshot.find(doc => doc.id === id);
-  }
-
   const deleteDocument = async (collectionName, id) => {
     try {
       await deleteDoc(doc(db.value, collectionName, id));
@@ -182,7 +182,7 @@ const useFirebase = () => {
     status, error,
     updateProfile, updateEmail, updatePassword, deleteUser,
     createAccount, login, logout, reauthenticate, sendPasswordResetEmail,
-    addDocument, getDocument, deleteDocument,
+    addDocument, deleteDocument,
     userGames, getGames
   };
 }

@@ -11,59 +11,60 @@ const gameStore = useGameStore();
 </script>
 
 <template>
-    <div class="card-wrapper">
-        <div v-if="gameStore.players.length == 0 || gameStore.holes.length == 0">
-            <p>You haven't started a game yet.</p>
-            <NewGameButton classes="btn btn-primary"/>
+    <div v-if="gameStore.players.length == 0 || gameStore.holes.length == 0" class="container">
+        <p>You haven't started a game yet.</p>
+        <NewGameButton classes="btn btn-primary"/>
+    </div>
+    <div v-else class="card-wrapper">
+        <div class="table-wrapper">
+            <table class="scorecard">
+                <thead>
+                    <tr>
+                        <th class="hole hole-info btn-td">
+                            <SaveGame />
+                        </th>
+                        <th v-for="(player, index) in gameStore.players" :key="index" class="player-info">
+                            <PlayerInfo :player="player" />
+                        </th>
+                        <th class="btn-td">
+                            <PlayerInfo :player="{}" :addButton="true" />
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(hole, holeIndex) in gameStore.holes" class="scorecard-row" :key="holeIndex">
+                        <td class="hole hole-info">
+                            <HoleInfo :hole="hole" />
+                        </td>
+                        <HoleScore :player="player" :hole="hole" v-for="(player, playerIndex) in gameStore.players" :key="playerIndex" />
+                    </tr>
+                    <tr>
+                        <td class="hole hole-info btn-td">
+                            <button class="btn btn-icon" @click.prevent="gameStore.addHole()">
+                                <span class="material-symbols-outlined">add_circle</span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot class="scorecard-total-row">
+                    <tr>
+                        <td class="hole hole-info">
+                            Total
+                        </td>
+                        <td v-for="(player, playerIndex) in gameStore.players" :key="playerIndex" class="hole hole-total">
+                            {{ player.total > 0 ? `+${player.total}` : player.total }}
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
-        <template v-else>
-            <div class="table-wrapper">
-                <table class="scorecard">
-                    <thead>
-                        <tr>
-                            <th class="hole hole-info btn-td">
-                                <SaveGame />
-                            </th>
-                            <th v-for="(player, index) in gameStore.players" :key="index" class="player-info">
-                                <PlayerInfo :player="player" />
-                            </th>
-                            <th class="btn-td">
-                                <PlayerInfo :player="{}" :addButton="true" />
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(hole, holeIndex) in gameStore.holes" class="scorecard-row" :key="holeIndex">
-                            <td class="hole hole-info">
-                                <HoleInfo :hole="hole" />
-                            </td>
-                            <HoleScore :player="player" :hole="hole" v-for="(player, playerIndex) in gameStore.players" :key="playerIndex" />
-                        </tr>
-                        <tr>
-                            <td class="hole hole-info btn-td">
-                                <button class="btn btn-icon" @click="gameStore.addHole()">
-                                    <span class="material-symbols-outlined">add_circle</span>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tfoot class="scorecard-total-row">
-                        <tr>
-                            <td class="hole hole-info">
-                                Total
-                            </td>
-                            <td v-for="(player, playerIndex) in gameStore.players" :key="playerIndex" class="hole hole-total">
-                                {{ player.total > 0 ? `+${player.total}` : player.total }}
-                            </td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-        </template>
     </div>
 </template>
 
 <style lang="scss" scoped>
+.container {
+    padding: 2rem;
+}
 .card-wrapper {
     position: fixed;
     top: 4rem;
@@ -78,7 +79,6 @@ const gameStore = useGameStore();
     width: fit-content;
     margin: auto;
     background: var(--col-dark-gray);
-    border-radius: var(--border-radius);
 }
 td {
     text-align: center;

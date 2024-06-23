@@ -20,8 +20,8 @@ const score = (value) => {
 <template>
     <p>How many throws did {{ player.name }} make on hole {{ hole.id + 1 }}?</p>
     <div class="button-holder">
-        <button class="btn btn-secondary" @click="() => score('')">0</button>
-        <button class="btn btn-secondary" v-for="i in 20" @click="() => score(i)" :key="i">{{ i }}</button>
+        <button class="btn btn-secondary" @click.prevent="() => score('')">0</button>
+        <button class="btn btn-secondary" v-for="i in 20" @click.prevent="() => score(i)" :key="i">{{ i }}</button>
     </div>
 </template>
 

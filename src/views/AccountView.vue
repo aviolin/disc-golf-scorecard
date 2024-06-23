@@ -20,7 +20,7 @@ onBeforeMount(() => {
 <template>
     <form class="account container" :key="user">
         <h1>My account</h1>
-        <button @click="logout" class="btn btn-secondary btn-small">
+        <button @click.prevent="logout" class="btn btn-secondary btn-small">
             <span class="material-symbols-outlined">logout</span> Logout
         </button>
         <AccountDisplayName />
@@ -33,6 +33,7 @@ onBeforeMount(() => {
 <style lang="scss" scoped>
 .account {
     padding: 2rem;
+    overflow-x: clip;
 }
 .btn {
     margin-left: 100%;

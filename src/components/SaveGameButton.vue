@@ -7,7 +7,7 @@ const modalOpen = ref(false)
 </script>
 
 <template>
-    <button class="btn btn-icon" @click="modalOpen = true"><span class="material-symbols-outlined">save</span></button>
+    <button class="btn btn-icon" @click.prevent="modalOpen = true"><span class="material-symbols-outlined">save</span></button>
     <ModalWrapper 
         v-if="modalOpen" 
         v-slot="modal"

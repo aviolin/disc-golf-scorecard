@@ -22,7 +22,7 @@ const save = () => {
     <div>
         <div class="account-row">
             <span>{{ user?.displayName || '(none)' }}</span>
-            <button @click="modalOpen = true" class="btn btn-secondary btn-small">Change display name</button>
+            <button @click.prevent="modalOpen = true" class="btn btn-secondary btn-small">Change display name</button>
         </div>
         <ModalWrapper 
             v-if="modalOpen" 

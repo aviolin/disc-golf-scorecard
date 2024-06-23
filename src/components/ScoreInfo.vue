@@ -45,7 +45,7 @@ const scoreClass = computed(() => {
 <template>
     <td :class="'score-' + scoreClass">
         <div class="score-wrapper">
-            <button @click="() => setModalOpen(true)">
+            <button @click.prevent="() => setModalOpen(true)">
                 <b>{{ player.holes[hole.id].score }}</b>
             </button>
             <ModalWrapper 

@@ -11,7 +11,7 @@ const emit = defineEmits([
     <Teleport to="body">
         <div class="modal" @click.self="emit('close')">
             <div class="modal-inner">
-                <button class="btn btn-close" @click="() => emit('close')">X</button>
+                <button class="btn btn-close" @click.prevent="() => emit('close')">X</button>
                 <slot :close="() => emit('close')" :test="5"></slot>
             </div>
         </div>
@@ -37,7 +37,6 @@ const emit = defineEmits([
     max-height: calc(100svh - 4rem);
     overflow-y: scroll;
     margin: auto;
-    margin-top: 2rem;
     background: var(--col-dark-gray);
     padding: 1rem;
     position: relative;

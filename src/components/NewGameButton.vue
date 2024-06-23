@@ -17,7 +17,7 @@ const props = defineProps({
 <template>
     <button
         :class="classes"
-        @click="newGameModalIsOpen = true"
+        @click.prevent="newGameModalIsOpen = true"
     >
         New Game
     </button>

@@ -17,7 +17,7 @@ const save = () => {
 
 <template>
     <div class="delete-button-wrapper">
-        <button @click="modalOpen = true" class="btn btn-warn btn-small">Delete account</button>
+        <button @click.prevent="modalOpen = true" class="btn btn-warn btn-small">Delete account</button>
         <ModalWrapper 
             v-if="modalOpen" 
             @close="modalOpen = false">

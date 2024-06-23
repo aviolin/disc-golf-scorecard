@@ -31,7 +31,7 @@ const save = () => {
     <div>
         <div class="account-row">
             <span>********</span>
-            <button @click="modalOpen = true" class="btn btn-secondary btn-small">Change password</button>
+            <button @click.prevent="modalOpen = true" class="btn btn-secondary btn-small">Change password</button>
         </div>
         <ModalWrapper 
             v-if="modalOpen" 

@@ -33,11 +33,11 @@ onBeforeMount(() => {
         </div>
         <div>
             <label for="email">Email *</label>
-            <input type="email" id="email" v-model="email" />
+            <input type="email" id="email" v-model="email" autocomplete="username"/>
         </div>
         <div>
             <label for="password">Password *</label>
-            <input type="password" id="password" v-model="password" />
+            <input type="password" id="password" v-model="password" autocomplete="current-password" />
         </div>
         <button type="submit" class="btn btn-primary" @click.prevent="createUser">Sign Up</button>
         <div class="login-link">

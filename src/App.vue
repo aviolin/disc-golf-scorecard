@@ -1,8 +1,10 @@
 <script setup>
 import { useFirebase } from '@/composables/useFirebase'
 import AnimatedLoader from '@/components/AnimatedLoader.vue'
+import { useGameStore } from '@/stores/game'
 
 const { status, user } = useFirebase()
+const gameStore = useGameStore()
 
 </script>
 
@@ -14,7 +16,11 @@ const { status, user } = useFirebase()
           <RouterLink to="/" class="logo"><img src="/favicon.svg"><i>Disc Golf Scorecard</i></RouterLink>
         </div>
         <nav>
-          <RouterLink to="/play" class="btn btn-primary btn-small">
+          <RouterLink 
+            v-if="gameStore.players.length != 0 && gameStore.holes.length != 0"
+            to="/play" 
+            class="btn btn-primary btn-small"
+          >
             <span class="material-symbols-outlined">visibility</span> Card
           </RouterLink>
           <RouterLink v-if="user" to="/account" class="btn btn-icon"><span class="material-symbols-outlined">account_circle</span></RouterLink>

@@ -176,8 +176,15 @@ export const useGameStore = defineStore('gameStore', () => {
         }))
     }
 
+    const removeLocalStorage = () => {
+        if (!localStorage.getItem('scorecard')) return
+        localStorage.removeItem('scorecard')
+        players.value = []
+        holes.value = []
+    }
+
     watch(players, updateLocalStorage, { deep: true })
     watch(holes, updateLocalStorage, { deep: true })
 
-    return { players, holes, cloneGame, setGame, addPlayer, removePlayer, setPlayers, updateName, addHole, setHole, setHoles, setScore, reset, setPar }
+    return { players, holes, cloneGame, setGame, addPlayer, removePlayer, setPlayers, updateName, addHole, setHole, setHoles, setScore, reset, setPar, removeLocalStorage }
 })
