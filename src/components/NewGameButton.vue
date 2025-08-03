@@ -8,7 +8,7 @@ const newGameModalIsOpen = ref(false)
 const props = defineProps({
     classes: {
         type: String,
-        default: 'btn'
+        default: 'btn btn-primary'
     }
 })
 

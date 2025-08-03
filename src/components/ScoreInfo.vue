@@ -72,34 +72,43 @@ button {
 td {
     text-align: center;
     border: 0;
-    background: var(--col-gray);
+    background: var(--col-dark-gray);
+    border: 1px solid var(--col-border);
     transition: 0.5s;
+
+    &:hover {
+        background: var(--col-light-gray);
+    }
 
     &.score {
         &-ace {
-            background: #33ffff;
+            background: radial-gradient(#ccffff, #33ccff);
         }
         &-eagle {
-            background: #33ff66;
+            background: radial-gradient(#ccffcc, #66dd66);
         }
         &-birdie {
-            background: #bbffaa;
+            background: radial-gradient(#ddffcc, #aadd99)
         }
         &-par {
             background: lightblue;
+            background: radial-gradient(#f0f0ff, lightblue);
         }
         &-bogey {
-            background: #FFa0aB;
+            background: radial-gradient(#ffcccc, #ffaa33);
         }
         &-double-bogey {
-            background: #ff6666;
+            background: radial-gradient(#ffcccc, #ff5500);
         }
         &-triple-bogey {
-            background: red;
+            background: radial-gradient(#ffcccc, #ff3333);
         }
         &-other {
-            background: red;
+            background: radial-gradient(#ff9999, #ff3333);
         }
     }
+}
+.score-wrapper {
+    height: 3rem;
 }
 </style>

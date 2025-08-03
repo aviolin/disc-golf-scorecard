@@ -1,5 +1,5 @@
 # Disc Golf Scorecard
-![Disc Golf Scorecard screenshot](https://i.ibb.co/GJhSbT4/Screenshot-2024-06-18-at-3-04-16-PM.png)
+![Disc Golf Scorecard screenshot](https://i.ibb.co/7Nvqmw1x/Screenshot-2025-08-03-at-2-47-54-PM.png)
 
 An easy to use app to track your score during a round of disc golf. Made using Vue and Firebase.
 

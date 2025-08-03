@@ -11,7 +11,9 @@ const emit = defineEmits([
     <Teleport to="body">
         <div class="modal" @click.self="emit('close')">
             <div class="modal-inner">
-                <button class="btn btn-close" @click.prevent="() => emit('close')">X</button>
+                <button class="btn btn-close" @click.prevent="() => emit('close')">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
                 <slot :close="() => emit('close')" :test="5"></slot>
             </div>
         </div>
@@ -25,7 +27,7 @@ const emit = defineEmits([
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.66);
+    background: rgba(0, 0, 0, 0.33);
     z-index: 100;
     display: flex;
     justify-content: center;
@@ -35,9 +37,9 @@ const emit = defineEmits([
     max-width: min(calc(100% - 4rem), 600px);
     max-height: calc(100vh - 4rem);
     max-height: calc(100svh - 4rem);
-    overflow-y: scroll;
+    overflow-y: auto;
     margin: auto;
-    background: var(--col-dark-gray);
+    background: var(--col-black);
     padding: 1rem;
     position: relative;
     border-radius: var(--border-radius);
@@ -49,7 +51,7 @@ const emit = defineEmits([
     padding: 1rem;
     border: 0;
     background: transparent;
-    color: var(--col-offwhite);
+    color: var(--col-white);
     cursor: pointer;
 }
 </style>

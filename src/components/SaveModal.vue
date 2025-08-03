@@ -38,7 +38,7 @@ const saveGame = () => {
 <template>
     <p v-if="!user"><RouterLink to="/log-in">Log in</RouterLink> or <RouterLink to="/sign-up">create an account</RouterLink> to save your games.</p>
     <form v-else>
-        <label for="savename">Save name:</label>
+        <label for="savename">Save as:</label>
         <input type="text" id="savename" :value="saveName" @input="updateName"/>
         <label for="date">Date:</label>
         <input type="date" id="date" :value="saveDate" @change="updateDate"/>

@@ -3,6 +3,7 @@ import { ref, onBeforeMount } from 'vue'
 import { router } from '@/router'
 import { useFirebase } from '@/composables/useFirebase'
 import AuthError from '@/components/AuthError.vue';
+import MainFooter from '@/components/MainFooter.vue';
 
 const { createAccount, user } = useFirebase()
 
@@ -41,9 +42,11 @@ onBeforeMount(() => {
         </div>
         <button type="submit" class="btn btn-primary" @click.prevent="createUser">Sign Up</button>
         <div class="login-link">
-            <p>Have an account? <RouterLink to="log-in">Login</RouterLink></p>
+            <p>Have an account? <RouterLink to="log-in">Log In</RouterLink></p>
         </div>
     </form>
+
+    <MainFooter />
 </template>
 
 <style lang="scss" scoped>

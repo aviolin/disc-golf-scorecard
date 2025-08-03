@@ -3,6 +3,7 @@ import { ref, onBeforeMount } from 'vue'
 import { router } from '@/router'
 import { useFirebase } from '@/composables/useFirebase'
 import AuthError from '@/components/AuthError.vue'
+import MainFooter from '@/components/MainFooter.vue'
 
 const { login, user } = useFirebase()
 
@@ -39,6 +40,8 @@ onBeforeMount(() => {
             <p>Forgot your password? <RouterLink to="/reset-password">Reset your password.</RouterLink></p>
         </div>
     </form>
+
+    <MainFooter />
 </template>
 
 <style lang="scss" scoped>

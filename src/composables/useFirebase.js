@@ -45,6 +45,7 @@ const user = ref(null);
 const db = ref(null);
 
 const userGames = ref([]);
+const gamesStatus = ref('loading');
 
 const status = ref('loading');
 const error = ref(null);
@@ -112,7 +113,7 @@ const useFirebase = () => {
     signInWithEmailAndPassword(auth.value, email, password)
       .then((userCredential) => {
         // Signed in 
-        const user = userCredential.user;
+        const _user = userCredential.user;
         router.push('/');
       })
       .catch((err) => {
@@ -163,6 +164,7 @@ const useFirebase = () => {
   }
 
   const getGames = async () => {
+    gamesStatus.value = 'loading';
     const q = query(collection(db.value, "games"), where("owner", "==", user.value.uid));
     const querySnapshot = await getDocs(q);
 
@@ -174,6 +176,7 @@ const useFirebase = () => {
     });
 
     userGames.value = games;
+    gamesStatus.value = 'loaded';
   }
 
 
@@ -183,7 +186,7 @@ const useFirebase = () => {
     updateProfile, updateEmail, updatePassword, deleteUser,
     createAccount, login, logout, reauthenticate, sendPasswordResetEmail,
     addDocument, deleteDocument,
-    userGames, getGames
+    userGames, getGames, gamesStatus,
   };
 }
 

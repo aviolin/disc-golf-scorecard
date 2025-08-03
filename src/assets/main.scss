@@ -5,18 +5,14 @@
 @import './scrollbars';
 
 :root {
-  --col-danger: red;
-  --col-black: #111;
-  --col-dark-gray: #333;
-  --col-gray: gray;
-  --col-mid-gray: #999;
-  --col-light-gray: #ddd;
-  --col-offwhite: #eee;
-  --col-white: #fff;
-  --col-orange: yellow;
-
-  --col-accent: #590de5;
-  --col-accent-light: #8c40ff;
+  --col-danger: #ffccbb;
+  --col-black: #fff;
+  --col-dark-gray: #fbfcfd;
+  --col-light-gray: #f0f0f0;
+  --col-mid-gray: #aab;
+  --col-white: #334;
+  --col-accent: #fff;
+  --col-border: #d9d9df;
 
   --border-radius: .5rem;
 }

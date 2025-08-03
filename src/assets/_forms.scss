@@ -7,7 +7,7 @@ textarea {
   margin-bottom: 1rem;
   width: 100%;
   border-radius: var(--border-radius);
-  border: 0;
+  border: 1px solid var(--col-border);
 }
 
 textarea {
@@ -33,10 +33,10 @@ textarea {
       cursor: pointer;
       color: var(--col-white);
       transition: .3s;
+      border: 1px solid var(--col-border);
       
       &:hover {
-        background: var(--col-offwhite);
-        color: var(--col-black);
+        border-color: var(--col-mid-gray);
       }
     }
   

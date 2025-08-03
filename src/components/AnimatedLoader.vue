@@ -16,7 +16,7 @@
     height: 80svh;
 }
 .lds-circle {
-  color: var(--col-accent-light);
+  color: var(--col-black);
 }
 .lds-circle,
 .lds-circle div {

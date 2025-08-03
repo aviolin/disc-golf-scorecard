@@ -78,7 +78,7 @@ const gameStore = useGameStore();
     min-width: min(768px, 100%);
     width: fit-content;
     margin: auto;
-    background: var(--col-dark-gray);
+    // background: var(--col-dark-gray);
 }
 td {
     text-align: center;
@@ -102,7 +102,7 @@ th {
 }
 thead {
     position: sticky;
-    top: 0;
+    top: 2px;
     background: var(--col-white);
     z-index: 50;
 }
@@ -130,18 +130,18 @@ thead {
 }
 
 .btn-td {
-    background: var(--col-accent);
+    background: var(--col-black);
     transition: .3s;
     &:hover {
-        background: var(--col-accent-light);
+        background: var(--col-black);
     }
 }
 
 .player-info {
-    background: var(--col-accent-light);
+    background: var(--col-black);
     transition: .3s;
     &:hover {
-        background: var(--col-accent);
+        background: var(--col-black);
     }
 }
 </style>

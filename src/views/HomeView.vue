@@ -2,9 +2,10 @@
 import { useFirebase } from '@/composables/useFirebase'
 import { useGameStore } from '@/stores/game'
 import { router } from '@/router'
+import MainFooter from '@/components/MainFooter.vue'
 import NewGameButton from '@/components/NewGameButton.vue'
 
-const { status, user, userGames, deleteDocument, getGames } = useFirebase()
+const { status, user, userGames, gamesStatus, deleteDocument, getGames } = useFirebase()
 const gameStore = useGameStore()
 
 const loadGame = (game) => {
@@ -26,13 +27,25 @@ const deleteGame = (game) => {
 
 <template>
     <form v-if="status !== 'loading'" class="archive container">
-        <h1>My games</h1>
-        <NewGameButton />
-        <p v-if="!userGames.length && user">
-            No games found.
+        <div class="logged-out-hero" v-if="!user">
+            <h1>Disc Golf Scorecard</h1>
+            <div class="button-wrapper">
+                <NewGameButton />
+            </div>
+            <p>Easily track and save your scores.</p>
+            <p>
+                <RouterLink to="/log-in">Log in</RouterLink> or <RouterLink to="/sign-up">create an account</RouterLink> to save your games.
+            </p>
+        </div>
+        <div class="logged-in-hero" v-else>
+            <h1>My games</h1>
+            <NewGameButton />
+        </div>
+        <p v-if="user && gamesStatus === 'loading'">
+            Loading your games...
         </p>
-        <p v-else-if="!userGames.length && !user">
-            <RouterLink to="/log-in">Log in</RouterLink> or <RouterLink to="/sign-up">create an account</RouterLink> to save your games.
+        <p v-else-if="!userGames.length && user">
+            No games found.
         </p>
         <ul v-else>
             <li v-for="game in userGames" :key="game.id">
@@ -58,12 +71,13 @@ const deleteGame = (game) => {
             </li>
         </ul>
     </form>
+
+    <MainFooter />
 </template>
 
 <style lang="scss" scoped>
 .archive {
     padding: 2rem;
-    padding-bottom: 10rem;
 }
 ul {
     list-style-type: none;
@@ -79,16 +93,24 @@ li {
     border-radius: var(--border-radius);
     color: var(--col-black);
     transition: .3s;
-
+    border: 1px solid var(--col-border);
+    
     &:hover {
-        background: var(--col-accent);
+        box-shadow: 0 0 .5rem .5rem #f9f9f9;
+        background: var(--col-black);
     }
 }
-
+.logged-out-hero {
+    text-align: center;
+    margin-bottom: 2rem;
+    .button-wrapper {
+        margin-block: 3rem;
+    }
+}
 .btn-game {
     background: none;
     border: 0;
-    color: var(--col-offwhite);
+    color: var(--col-white);
     font-size: 1.5rem;
     margin-bottom: .5rem;
     display: flex;

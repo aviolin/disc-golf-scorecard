@@ -6,6 +6,7 @@ import AccountDisplayName from '@/components/AccountDisplayName.vue'
 import AccountEmail from '@/components/AccountEmail.vue'
 import AccountPassword from '@/components/AccountPassword.vue'
 import AccountDelete from '@/components/AccountDelete.vue'
+import MainFooter from '@/components/MainFooter.vue'
 
 const { user, logout } = useFirebase()
 
@@ -28,6 +29,8 @@ onBeforeMount(() => {
         <AccountPassword />
         <AccountDelete />
     </form>
+
+    <MainFooter />
 </template>
 
 <style lang="scss" scoped>

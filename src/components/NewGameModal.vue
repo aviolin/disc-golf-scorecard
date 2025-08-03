@@ -84,7 +84,7 @@ const canStartGame = computed(() => {
       </div>
       <div class="form-row">
         <button class="btn btn-primary" :disabled="!canStartGame">Start</button>
-        <small>* This will overwrite any current unsaved scorecard.</small>
+        <small>* This will overwrite any current unsaved game.</small>
       </div>
     </form>
 </template>

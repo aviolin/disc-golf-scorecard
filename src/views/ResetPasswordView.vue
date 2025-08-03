@@ -2,6 +2,7 @@
 import { ref, onBeforeMount } from 'vue'
 import { router } from '@/router'
 import { useFirebase } from '@/composables/useFirebase'
+import MainFooter from '@/components/MainFooter.vue'
 
 const { user, auth, sendPasswordResetEmail } = useFirebase()
 
@@ -30,6 +31,8 @@ const sendEmail = () => {
         </div>
         <button type="submit" class="btn btn-primary">Send Password Reset Email</button>
     </form>
+
+    <MainFooter />
 </template>
 
 <style lang="scss" scoped>
